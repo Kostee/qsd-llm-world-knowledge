@@ -30,6 +30,32 @@ We reuse `dataset_for_llms.csv` as the primary dataset for the current **LLM zer
 ### `folds_indices.csv`
 Pre-generated indices/splits used for the earlier **PLM cross-validation** runs.
 
+### `WB_survey_expB2_ABexpanded.csv`
+Constructed ("invented") dataset in a paired format (each `idx` occurs twice with A/B swapped), originally used in the human survey workflow and reused here for LLM evaluation.
+
+### `constructed_for_llms.csv` (generated)
+A deterministic one-per-pair selection (one row per `idx`) generated from `WB_survey_expB2_ABexpanded.csv` for LLM runs.
+
+#### How to generate `constructed_for_llms.csv`
+
+##### Windows (PowerShell)
+```powershell
+python scripts\make_constructed_for_llms.py `
+  --input data\private\WB_survey_expB2_ABexpanded.csv `
+  --output data\private\constructed_for_llms.csv `
+  --seed 42 `
+  --strict
+```
+
+##### Linux/MacOS
+```
+python scripts/make_constructed_for_llms.py \
+  --input data/private/WB_survey_expB2_ABexpanded.csv \
+  --output data/private/constructed_for_llms.csv \
+  --seed 42 \
+  --strict
+```
+
 ### Notes
 - The "paired" file (`MM_balanced_dataset.csv`) is kept for transparency and reproducibility of the selection procedure.
 - The main benchmark for the current paper is `dataset_for_llms.csv` (440 instances).

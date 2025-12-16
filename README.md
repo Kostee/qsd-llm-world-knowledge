@@ -26,14 +26,22 @@ pip install -r requirements.txt
 ## Data
 
 Full datasets are kept locally under `data/private/` (not tracked by git).
-Small preview files are provided in `data/public/`. Expected full files (local):
+Small preview files are provided in `data/public/`.
 
-- `MM_balanced_dataset.csv` - full balanced dataset (440 sentence pairs; 880 instances total).
-- `dataset_for_llms.csv` - final evaluation set (440 instances), used as the main input for PLM and LLM experiments.
-- `folds_indices.csv` - indices used for earlier PLM cross-validation runs.
+Expected full files (local):
+
+- `data/private/MM_balanced_dataset.csv` - full balanced dataset (440 sentence pairs; 880 instances total).
+- `data/private/dataset_for_llms.csv` - final evaluation set (440 instances), used as the main input for PLM and LLM experiments on the balanced data.
+- `data/private/folds_indices.csv` - indices used for earlier PLM cross-validation runs.
+- `data/private/WB_survey_expB2_ABexpanded.csv` - constructed (“invented”) dataset (paired format), used for LLM evaluation without RAG.
+
+Derived files (local):
+- `data/private/constructed_for_llms.csv` – one-per-pair selection from the constructed dataset for LLM runs (generated via `scripts/make_constructed_for_llms.py`).
 
 Preview files (tracked):
 - `data/public/*.preview.csv`
+
+For details, see `data/README.md`.
 
 ## Running experiments (high level)
 
@@ -47,6 +55,8 @@ Preview files (tracked):
 
 * LLM baseline on invented set:
 `python -m src.llm.zero_shot --dataset invented ...`
+
+Before running LLM experiments on the constructed dataset, generate `constructed_for_llms.csv` using `scripts/make_constructed_for_llms.py` (see `data/README.md`).
 
 ## Outputs
 

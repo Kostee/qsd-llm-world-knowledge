@@ -1,0 +1,6 @@
+idx,sentence,Option A,Option B,gold_ans,gold_scope_label,OP1,OP1_type,OP2,OP2_type
+1,Each squalder snorples exactly five thistlehounds dreft the flixter.,all squalders snorple the same five thistlehounds,not all squalders snorple the same five thistlehounds,B,surface,each,universal,exactly five,number
+2,Each thrummer jostives exactly five murkprows.,all thrummers jostive the same five murkprows,not all thrummers jostive the same five murkprows,B,surface,each,universal,exactly five,number
+3,Every thrumper claspines a quivel yonder.,there is exactly one quivel in total,there is more than one quivel in total,B,surface,every,universal,a,indefinite
+4,Each grackle skimbles one thornhauler amonge the glimmon.,all grackles skimble the same thornhauler,not all grackles skimble the same thornhauler,B,surface,each,universal,one,number
+5,Every tinkler flunders a cresthunter underth.,there is exactly one cresthunter in total,there is more than one cresthunter in total,B,surface,every,universal,a,indefinite
