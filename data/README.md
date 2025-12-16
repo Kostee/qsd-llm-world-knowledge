@@ -2,6 +2,12 @@
 
 This repository includes the datasets used in our QSD experiments.
 
+## Overview
+This repository uses a **public / private** data split:
+
+- `data/private/` – full datasets (local only; **not tracked by git**)
+- `data/public/` – small preview files (tracked) for quick inspection and smoke tests
+
 ## Files
 
 ### `MM_balanced_dataset.csv`
@@ -24,6 +30,10 @@ We reuse `dataset_for_llms.csv` as the primary dataset for the current **LLM zer
 ### `folds_indices.csv`
 Pre-generated indices/splits used for the earlier **PLM cross-validation** runs.
 
-## Notes
+### Notes
 - The "paired" file (`MM_balanced_dataset.csv`) is kept for transparency and reproducibility of the selection procedure.
 - The main benchmark for the current paper is `dataset_for_llms.csv` (440 instances).
+
+## Public previews (tracked)
+Preview files are provided under `data/public/` for transparency and repository browsing.
+They contain only a small subset of rows (e.g., first 5 rows) and are **not** used for reporting results.
