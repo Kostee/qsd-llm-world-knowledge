@@ -24,7 +24,9 @@ pip install -r requirements.txt
 ```
 
 ## Data
-Datasets are stored in `data/`:
+
+Full datasets are kept locally under `data/private/` (not tracked by git).
+Small preview files are provided in `data/public/`.
 
 - `data/MM_balanced_dataset.csv` - full balanced dataset (440 sentence pairs; 880 instances total).
 - `data/dataset_for_llms.csv` - final evaluation set (440 instances), used as the main input for PLM and LLM experiments.
