@@ -26,11 +26,14 @@ pip install -r requirements.txt
 ## Data
 
 Full datasets are kept locally under `data/private/` (not tracked by git).
-Small preview files are provided in `data/public/`.
+Small preview files are provided in `data/public/`. Expected full files (local):
 
-- `data/MM_balanced_dataset.csv` - full balanced dataset (440 sentence pairs; 880 instances total).
-- `data/dataset_for_llms.csv` - final evaluation set (440 instances), used as the main input for PLM and LLM experiments.
-- `data/folds_indices.csv` - indices used for earlier PLM cross-validation runs.
+- `MM_balanced_dataset.csv` - full balanced dataset (440 sentence pairs; 880 instances total).
+- `dataset_for_llms.csv` - final evaluation set (440 instances), used as the main input for PLM and LLM experiments.
+- `folds_indices.csv` - indices used for earlier PLM cross-validation runs.
+
+Preview files (tracked):
+- `data/public/*.preview.csv`
 
 ## Running experiments (high level)
 
