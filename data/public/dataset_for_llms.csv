@@ -1,0 +1,6 @@
+Unnamed: 0.1,Unnamed: 0,sentence,Option A,Option B,OP1,OP2,gold_ans,gold_scope_label,OP1_type,OP2_type,OP_rel,relation,comb
+0,1.0,A book is given to each student in the class.,"In total, more than one book is given.","In total, one book is given.",a,each,A,inverse,indefinite,universal,unimported,unimported,3
+2,3.0,A new episode is released every week.,Different episodes are released each week.,The same episode is released every week.,a,every,A,inverse,indefinite,universal,unimported,unimported,3
+4,5.0,A gift is given to each employee at the end of the year.,"In total, more than one gift is given.","In total, one gift is given.",a,each,A,inverse,indefinite,universal,unimported,unimported,3
+6,7.0,A different dish is served each day of the week.,There are more than two dishes served in total.,There are exactly two dishes served in total.,a,each,A,inverse,indefinite,universal,unimported,unimported,3
+9,10.0,A new song is played every hour on the radio.,The same song is played every hour.,Different songs are played each hour.,a,every,B,inverse,indefinite,universal,unimported,unimported,3

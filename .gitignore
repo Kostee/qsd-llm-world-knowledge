@@ -109,3 +109,6 @@ src/plm/**/metrics.csv
 src/plm/**/predictions.csv
 src/plm/**/log.txt
 src/plm/**/rag_corpus/
+
+# Private data (full datasets)
+data/private/
