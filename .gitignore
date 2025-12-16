@@ -205,3 +205,24 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Secrets
+.env
+*.key
+
+# Large/local data
+data/raw/
+data/**/raw/
+*.sqlite
+*.db
+
+# Runs / outputs
+runs/
+outputs/
+artifacts/
+*.log
+
+# Model checkpoints / HF cache
+checkpoints/
+models/
+.cache/
