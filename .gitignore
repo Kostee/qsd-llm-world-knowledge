@@ -112,3 +112,20 @@ src/plm/**/rag_corpus/
 
 # Private data (full datasets)
 data/private/
+
+# Outputs
+results/
+results/**
+runs/
+runs/**
+
+# Virtualenvs
+.venv/
+.venv/**
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+
+App
+python3
