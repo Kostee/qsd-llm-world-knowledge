@@ -33,6 +33,9 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 import tenacity
+from statistics import median
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
+
 
 # .env loading is optional but recommended (repo includes .env.example)
 try:
@@ -268,7 +271,7 @@ def majority_vote(choices: List[str], rng: random.Random) -> str:
     return rng.choice(["A", "B"])
 
 
-def build_chain(model_name: str, temperature: float = 0.0, max_tokens: int = 10):
+def build_chain(model_name: str, temperature: float = 0.0, max_tokens: int = 64):
     """
     Create a prompt -> LLM -> parser chain.
     """
@@ -324,7 +327,12 @@ def write_metrics(metrics: Dict[str, Any], out_dir: Path) -> None:
     (out_dir / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
 
     # Flat CSV summary for quick browsing
-    rows = [{"metric": "accuracy_overall", "value": metrics.get("accuracy_overall"), "n": metrics.get("n")}]
+    rows = [
+        {"metric": "accuracy_overall", "value": metrics.get("accuracy_overall"), "n": metrics.get("n")},
+        {"metric": "runtime_seconds_total", "value": metrics.get("runtime_seconds_total"), "n": metrics.get("n")},
+        {"metric": "runtime_mmss", "value": metrics.get("runtime_mmss"), "n": metrics.get("n")},
+    ]
+
     if "accuracy_by_gold_scope_label" in metrics:
         for k, v in metrics["accuracy_by_gold_scope_label"].items():
             rows.append({"metric": f"accuracy_by_gold_scope_label::{k}", "value": v["accuracy"], "n": v["n"]})
@@ -375,6 +383,22 @@ def already_done(run_dir: Path) -> bool:
     return (run_dir / "predictions.csv").exists() and (run_dir / "metrics.json").exists()
 
 
+def format_mmss(seconds: float) -> str:
+    seconds = max(0.0, float(seconds))
+    m = int(seconds // 60)
+    s = int(seconds % 60)
+    return f"{m:02d}:{s:02d}"
+
+
+def invoke_with_timeout(fn, timeout_s: int):
+    with ThreadPoolExecutor(max_workers=1) as ex:
+        fut = ex.submit(fn)
+        try:
+            return fut.result(timeout=timeout_s)
+        except FuturesTimeoutError:
+            raise TimeoutError(f"LLM call timed out after {timeout_s}s")
+
+
 def evaluate(spec: RunSpec) -> None:
     run_id = make_run_id(spec)
     out_dir = DEFAULT_RESULTS_DIR / run_id
@@ -405,6 +429,10 @@ def evaluate(spec: RunSpec) -> None:
         )
         print(f"[ERROR] RAG requested but not implemented yet. See: {out_dir / 'RAG_NOT_IMPLEMENTED.txt'}")
         raise NotImplementedError("RAG mode is not implemented yet.")
+    
+    t_run_start = time.perf_counter()
+    llm_call_durations: List[float] = []
+    llm_call_failures = 0
 
     df = load_dataset(spec.dataset_path)
 
@@ -421,27 +449,58 @@ def evaluate(spec: RunSpec) -> None:
     # Build chain once per model
     chain = None
     if do_api_calls:
-        chain = build_chain(spec.model_name, temperature=0.0, max_tokens=10)
+        chain = build_chain(spec.model_name, temperature=0.0, max_tokens=64)
 
+    def _is_permanent_error(e: Exception) -> bool:
+        msg = str(e).lower()
+        return any(x in msg for x in [
+            "401", "unauthorized",
+            "403", "forbidden",
+            "404", "not found",
+            "model_not_found",
+            "invalid api key",
+        ])
+    def _before_sleep(retry_state):
+        exc = retry_state.outcome.exception()
+        print(f"[RETRY] attempt={retry_state.attempt_number} after error: {exc}", flush=True)
+    def _should_retry(exc: Exception) -> bool:
+        return not _is_permanent_error(exc)
+    
     @tenacity.retry(
         wait=tenacity.wait_exponential(multiplier=2, min=2, max=60),
         stop=tenacity.stop_after_attempt(5),
-        retry=tenacity.retry_if_exception_type((Exception,))
+        retry=tenacity.retry_if_exception(_should_retry),
+        before_sleep=_before_sleep,
     )
     def call_once(prompt_text: str) -> str:
         assert chain is not None
-        reply = chain.invoke({"prompt": prompt_text})
+
+        timeout_s = int(os.getenv("LLM_REQUEST_TIMEOUT_S", "90"))
+
+        def _do_call():
+            return chain.invoke({"prompt": prompt_text})
+
+        # any exception here will be handled by tenacity (unless permanent)
+        reply = invoke_with_timeout(_do_call, timeout_s=timeout_s)
+        if reply is None:
+            raise ValueError("Empty response: None")
+        reply = str(reply).strip()
+        if not reply:
+            raise ValueError("Empty response: ''")
+
         if not isinstance(reply, str):
             reply = str(reply)
+
         parsed = parse_choice(reply)
-        if parsed not in ("A", "B"):
-            raise ValueError(f"Unparseable response: {reply!r}")
-        return parsed
+        if parsed in ("A", "B"):
+            return parsed
+
+        # treat unparseable output as retryable (ValueError)
+        raise ValueError(f"Unparseable response: {reply!r}")
 
     rows_out: List[Dict[str, Any]] = []
-    base_rng = random.Random(spec.seed)
 
-    for i, row in df_eval.iterrows():
+    for row_idx, (_, row) in enumerate(df_eval.iterrows()):
         sentence = row["sentence"]
         opt_a = row["Option A"]
         opt_b = row["Option B"]
@@ -455,17 +514,21 @@ def evaluate(spec: RunSpec) -> None:
             per_run = ["A"] * spec.repeats
         else:
             for r in range(spec.repeats):
+                t0 = time.perf_counter()
                 try:
                     choice = call_once(prompt_text)
                 except Exception:
-                    # If it keeps failing after retries, mark as INVALID-like and continue
-                    # Here we fallback to 'A' to keep row count stable, but we also log it.
+                    llm_call_failures += 1
                     choice = "A"
+                finally:
+                    llm_call_durations.append(time.perf_counter() - t0)
+
                 per_run.append(choice)
+
 
         # Majority vote (tie -> random)
         # Use deterministic per-row RNG derived from global seed + row index
-        row_rng = random.Random(spec.seed + int(i) * 10007)
+        row_rng = random.Random(spec.seed + row_idx * 10007)
         final_choice = majority_vote(per_run, row_rng)
 
         correct = (final_choice == gold)
@@ -483,6 +546,10 @@ def evaluate(spec: RunSpec) -> None:
         out["correct"] = bool(correct)
 
         rows_out.append(out)
+        if do_api_calls and (len(rows_out) % 25 == 0):
+            elapsed = time.perf_counter() - t_run_start
+            print(f"[PROGRESS] {len(rows_out)}/{len(df_eval)} done | elapsed {format_mmss(elapsed)}", flush=True)
+
 
     results_df = pd.DataFrame(rows_out)
 
@@ -491,7 +558,25 @@ def evaluate(spec: RunSpec) -> None:
 
     # Metrics
     metrics = compute_metrics(results_df)
+
+    # --- runtime logging ---
+    t_run_end = time.perf_counter()
+    runtime_seconds = t_run_end - t_run_start
+    metrics["runtime_seconds_total"] = float(runtime_seconds)
+    metrics["runtime_mmss"] = format_mmss(runtime_seconds)
+
+    if do_api_calls and llm_call_durations:
+        d = sorted(llm_call_durations)
+        metrics["llm_calls"] = int(len(d))
+        metrics["llm_call_failures"] = int(llm_call_failures)
+        metrics["llm_call_seconds_avg"] = float(sum(d) / len(d))
+        metrics["llm_call_seconds_p50"] = float(median(d))
+        # p90 (nearest-rank)
+        p90_idx = max(0, min(len(d) - 1, int(0.90 * len(d)) - 1))
+        metrics["llm_call_seconds_p90"] = float(d[p90_idx])
+
     write_metrics(metrics, out_dir)
+
 
     print(f"[DONE] Saved predictions to: {out_dir / 'predictions.csv'}")
     print(f"[DONE] Saved metrics to:      {out_dir / 'metrics.json'}")

@@ -5,8 +5,7 @@ VENV_PY="$(pwd)/.venv/Scripts/python.exe"
 
 MODELS=(
   "gpt-4o"
-  "gpt-5"
-  "gpt-4-0613"
+  "gpt-5.1"
   "qwen:qwen3-8b"
   "gemini:gemini-2.0-flash-exp"
   "openrouter:meta-llama/llama-3.1-8b-instruct"
