@@ -1,6 +1,6 @@
-idx,sentence,Option A,Option B,gold_ans,gold_scope_label,OP1,OP1_type,OP2,OP2_type
-1,Each squalder snorples exactly five thistlehounds dreft the flixter.,not all squalders snorple the same five thistlehounds,all squalders snorple the same five thistlehounds,A,surface,each,universal,exactly five,number
-1,Each squalder snorples exactly five thistlehounds dreft the flixter.,all squalders snorple the same five thistlehounds,not all squalders snorple the same five thistlehounds,B,surface,each,universal,exactly five,number
-2,Each thrummer jostives exactly five murkprows.,not all thrummers jostive the same five murkprows,all thrummers jostive the same five murkprows,A,surface,each,universal,exactly five,number
-2,Each thrummer jostives exactly five murkprows.,all thrummers jostive the same five murkprows,not all thrummers jostive the same five murkprows,B,surface,each,universal,exactly five,number
-3,Every thrumper claspines a quivel yonder.,there is more than one quivel in total,there is exactly one quivel in total,A,surface,every,universal,a,indefinite
+idx,sentence,Option A,Option B,gold_ans,gold_scope_label,OP1,OP1_type,OP2,OP2_type,comb
+1,Each squalder snorples exactly five thistlehounds dreft the flixter.,not all squalders snorple the same five thistlehounds,all squalders snorple the same five thistlehounds,A,surface,each,universal,exactly five,number,1
+1,Each squalder snorples exactly five thistlehounds dreft the flixter.,all squalders snorple the same five thistlehounds,not all squalders snorple the same five thistlehounds,B,surface,each,universal,exactly five,number,1
+2,Each thrummer jostives exactly five murkprows.,not all thrummers jostive the same five murkprows,all thrummers jostive the same five murkprows,A,surface,each,universal,exactly five,number,1
+2,Each thrummer jostives exactly five murkprows.,all thrummers jostive the same five murkprows,not all thrummers jostive the same five murkprows,B,surface,each,universal,exactly five,number,1
+3,Every thrumper claspines a quivel yonder.,there is more than one quivel in total,there is exactly one quivel in total,A,surface,every,universal,a,indefinite,1

@@ -25,16 +25,34 @@ MODELS=(
   "openrouter:meta-llama/llama-3.1-70b-instruct"
 )
 
-DATASETS=("balanced" "invented")
+# RAG runs: recommended only for balanced
+DATASETS=("balanced")
 
 for ds in "${DATASETS[@]}"; do
   for model in "${MODELS[@]}"; do
-    echo "=== DATASET=$ds LIMIT=all RAG=no MODEL=$model REPEATS=5 ==="
+    echo "=== DATASET=$ds LIMIT=all RAG=yes MODEL=$model REPEATS=5 ==="
     "$VENV_PY" src/llm_zero_shot.py \
       --dataset "$ds" \
       --limit all \
+      --rag \
       --model "$model" \
       --repeats 5 \
       --seed 42
   done
 done
+
+# If you REALLY want to run RAG also on invented, uncomment below:
+#
+# DATASETS=("balanced" "invented")
+# for ds in "${DATASETS[@]}"; do
+#   for model in "${MODELS[@]}"; do
+#     echo "=== DATASET=$ds LIMIT=all RAG=yes MODEL=$model REPEATS=5 ==="
+#     "$VENV_PY" src/llm_zero_shot.py \
+#       --dataset "$ds" \
+#       --limit all \
+#       --rag \
+#       --model "$model" \
+#       --repeats 5 \
+#       --seed 42
+#   done
+# done

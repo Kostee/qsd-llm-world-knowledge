@@ -51,6 +51,159 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
 
+# ---------------------------------------------------------------------------
+# RAG utilities (ConceptNet + Simple Wikipedia)
+#
+# We reuse the PLM RAG artifacts produced by src/build_rag_advanced.py:
+#   {RAG_DIR}/wiki_passages.pkl   -> List[str] passages
+#   {RAG_DIR}/wiki_passages.faiss -> FAISS index over normalized embeddings
+#
+# All imports here are lazy: non-RAG runs do not require extra deps.
+# ---------------------------------------------------------------------------
+
+RAG_DIR_DEFAULT = Path(os.getenv("RAG_DIR", "data/private/rag_corpus"))
+RAG_PASSAGES_BASENAME_DEFAULT = os.getenv("RAG_PASSAGES_BASENAME", "wiki_passages")
+RAG_EMBEDDING_MODEL_DEFAULT = os.getenv(
+    "RAG_EMBEDDING_MODEL", "sentence-transformers/multi-qa-mpnet-base-dot-v1"
+)
+RAG_TOP_K_DEFAULT = int(os.getenv("RAG_TOP_K", "3"))
+RAG_MAX_CONTEXT_CHARS_DEFAULT = int(os.getenv("RAG_MAX_CONTEXT_CHARS", "1200"))
+RAG_MAX_PASSAGE_CHARS_DEFAULT = int(os.getenv("RAG_MAX_PASSAGE_CHARS", "400"))
+
+
+@dataclass(frozen=True)
+class RagConfig:
+    """Runtime configuration for retrieval (tunable via env vars)."""
+
+    rag_dir: Path = RAG_DIR_DEFAULT
+    passages_basename: str = RAG_PASSAGES_BASENAME_DEFAULT
+    embedding_model: str = RAG_EMBEDDING_MODEL_DEFAULT
+    top_k: int = RAG_TOP_K_DEFAULT
+    max_context_chars: int = RAG_MAX_CONTEXT_CHARS_DEFAULT
+    max_passage_chars: int = RAG_MAX_PASSAGE_CHARS_DEFAULT
+
+
+class RagRetriever:
+    """Lightweight FAISS-backed retriever compatible with our PLM RAG artifacts."""
+
+    def __init__(self, *, passages: List[str], faiss_index: Any, embedder: Any):
+        self.passages = passages
+        self.index = faiss_index
+        self.embedder = embedder
+
+    @staticmethod
+    def _paths(cfg: RagConfig) -> Dict[str, Path]:
+        base = cfg.passages_basename
+        return {
+            "passages_pkl": cfg.rag_dir / f"{base}.pkl",
+            "index_faiss": cfg.rag_dir / f"{base}.faiss",
+        }
+
+    @classmethod
+    def load(cls, cfg: RagConfig) -> "RagRetriever":
+        """Load passages + FAISS index, and initialize the embedding model."""
+        try:
+            import pickle
+            import faiss  # type: ignore
+            from sentence_transformers import SentenceTransformer  # type: ignore
+        except Exception as e:
+            raise RuntimeError(
+                "RAG is enabled but required dependencies are missing. "
+                "Install: sentence-transformers and faiss-cpu (or faiss-gpu). "
+                "On Windows, FAISS can be easiest via conda or WSL2."
+            ) from e
+
+        paths = cls._paths(cfg)
+        for _, p in paths.items():
+            if not p.exists():
+                raise RuntimeError(
+                    f"Missing RAG artifact: {p}\n"
+                    "Build the RAG corpus/index first, e.g.:\n"
+                    "  python src/build_rag_advanced.py --output-dir data/private/rag_corpus\n"
+                    "or set RAG_DIR to point to your existing artifacts."
+                )
+
+        with open(paths["passages_pkl"], "rb") as f:
+            passages = pickle.load(f)
+
+        if not isinstance(passages, list) or (passages and not isinstance(passages[0], str)):
+            raise RuntimeError(
+                f"Unexpected passages format in {paths['passages_pkl']}. "
+                "Expected a pickled List[str]."
+            )
+
+        import faiss  # type: ignore
+        index = faiss.read_index(str(paths["index_faiss"]))
+
+        embedder = SentenceTransformer(cfg.embedding_model)
+
+        # Optional sanity check: embedding dim must match index dim
+        try:
+            dim_embedder = embedder.get_sentence_embedding_dimension()
+            dim_index = index.d
+            if dim_embedder != dim_index:
+                raise RuntimeError(
+                    f"Embedding dim mismatch: embedder={dim_embedder} vs index={dim_index}. "
+                    f"Check RAG_EMBEDDING_MODEL (currently: {cfg.embedding_model})."
+                )
+        except Exception:
+            pass
+
+        return cls(passages=passages, faiss_index=index, embedder=embedder)
+
+    def retrieve_batch(self, queries: List[str], *, top_k: int) -> List[List[str]]:
+        """Return top_k passages for each query."""
+        if not queries:
+            return []
+
+        q_emb = self.embedder.encode(
+            queries,
+            batch_size=32,
+            convert_to_numpy=True,
+            normalize_embeddings=True,
+            show_progress_bar=False,
+        ).astype("float32")
+
+        _, idxs = self.index.search(q_emb, top_k)
+
+        out: List[List[str]] = []
+        for row in idxs:
+            passages: List[str] = []
+            for i in row:
+                if i < 0:
+                    continue
+                ii = int(i)
+                if ii >= len(self.passages):
+                    continue
+                passages.append(self.passages[ii])
+            out.append(passages)
+        return out
+
+
+def format_rag_context(passages: List[str], cfg: RagConfig) -> str:
+    """Format retrieved passages into a compact block for prompting."""
+    seen: set[str] = set()
+    uniq: List[str] = []
+    for p in passages:
+        p = (p or "").strip()
+        if not p or p in seen:
+            continue
+        seen.add(p)
+        uniq.append(p)
+
+    chunks: List[str] = []
+    total = 0
+    for p in uniq:
+        p = p[: cfg.max_passage_chars]
+        line = f"- {p}"
+        if total + len(line) + 1 > cfg.max_context_chars:
+            break
+        chunks.append(line)
+        total += len(line) + 1
+
+    return "\n".join(chunks) if chunks else "(no relevant passages retrieved)"
+
+
 # -----------------------------
 # Configuration / constants
 # -----------------------------
@@ -84,6 +237,15 @@ class ModelFactory:
     - openrouter: -> OpenRouter (e.g., "openrouter:meta-llama/llama-3.1-8b-instruct")
     - gemini:     -> Google AI (e.g., "gemini:gemini-1.5-pro")
     """
+    @staticmethod
+    def _is_openai_reasoning_model(model_name: str) -> bool:
+        """
+        OpenAI reasoning models (o-series) do NOT support sampling params like
+        temperature/top_p. Example: o3-mini.
+        """
+        name = (model_name or "").strip().lower()
+        # Matches: o1, o1-mini, o3-mini, o3-mini-high, etc.
+        return bool(re.match(r"^o\d", name))
 
     @staticmethod
     def create(model_name: str, temperature: float = 0.0, max_tokens: int = 10):
@@ -97,16 +259,49 @@ class ModelFactory:
             return ModelFactory._create_qwen(model_name, temperature, max_tokens)
         return ModelFactory._create_openai(model_name, temperature, max_tokens)
 
-    @staticmethod
-    def _create_openai(model_name: str, temperature: float, max_tokens: int):
-        api_key = os.environ.get(ENV_OPENAI)
+    @classmethod
+    def _create_openai(cls, model_name: str, temperature: float, max_tokens: int) -> Any:
+
+        """
+        Create an OpenAI chat model.
+
+        NOTE:
+        - Reasoning models (o-series) reject `temperature` (and other sampling params).
+        - Some client libraries also set defaults; we explicitly null them out.
+        """
+        api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
-            raise RuntimeError(f"{ENV_OPENAI} is not set")
+            raise RuntimeError("OPENAI_API_KEY is not set")
+
+        if cls._is_openai_reasoning_model(model_name):
+            # Do NOT pass temperature to reasoning models.
+            # Also keep the request minimal to avoid other unsupported params.
+            llm = ChatOpenAI(
+                model=model_name,
+                api_key=api_key,
+                # Keep max_tokens if your lib supports it; prompt already forces 1-char output anyway.
+                max_tokens=max_tokens,
+            )
+
+            # Defensive: some wrappers keep defaults and still send them.
+            # We ensure sampling params are absent.
+            try:
+                setattr(llm, "temperature", None)
+            except Exception:
+                pass
+
+            if hasattr(llm, "model_kwargs") and isinstance(llm.model_kwargs, dict):
+                llm.model_kwargs.pop("temperature", None)
+                llm.model_kwargs.pop("top_p", None)
+
+            return llm
+
+        # Standard chat models (gpt-4o/gpt-5.1/etc.)
         return ChatOpenAI(
             model=model_name,
+            api_key=api_key,
             temperature=temperature,
             max_tokens=max_tokens,
-            api_key=api_key,
         )
 
     @staticmethod
@@ -215,6 +410,16 @@ PROMPT_TEMPLATE = (
     "Which of these two options is most likely?"
 )
 
+PROMPT_TEMPLATE_RAG = (
+    "Retrieved context (from external world-knowledge sources):\n"
+    "{rag_context}\n\n"
+    "{sentence}\n\n"
+    "There are two options. Choose which option (A or B) is more likely based on the sentence and the retrieved context.\n\n"
+    "Option A: {opt_a}\n"
+    "Option B: {opt_b}\n\n"
+    "Reply with exactly one character: A or B."
+)
+
 SYSTEM_MESSAGE = "Reply only with 'Option A' or 'Option B'."
 
 OPTION_A_PAT = re.compile(r"\b(option\s*a|^a\b)\.?", re.IGNORECASE)
@@ -281,13 +486,6 @@ def build_chain(model_name: str, temperature: float = 0.0, max_tokens: int = 64)
         ("user", "{prompt}"),
     ])
     return prompt | llm | StrOutputParser()
-
-
-def rag_not_implemented() -> None:
-    raise NotImplementedError(
-        "RAG mode is not implemented yet. "
-        "We will plug in dynamic retrieval (ConceptNet + Simple Wikipedia) later."
-    )
 
 
 # -----------------------------
@@ -421,15 +619,6 @@ def evaluate(spec: RunSpec) -> None:
         print(f"[SKIP] already calculated: {out_dir}")
         return
 
-    # RAG placeholder
-    if spec.rag:
-        # Create a friendly marker file then stop.
-        (out_dir / "RAG_NOT_IMPLEMENTED.txt").write_text(
-            "RAG mode requested but not implemented yet.\n", encoding="utf-8"
-        )
-        print(f"[ERROR] RAG requested but not implemented yet. See: {out_dir / 'RAG_NOT_IMPLEMENTED.txt'}")
-        raise NotImplementedError("RAG mode is not implemented yet.")
-    
     t_run_start = time.perf_counter()
     llm_call_durations: List[float] = []
     llm_call_failures = 0
@@ -445,11 +634,46 @@ def evaluate(spec: RunSpec) -> None:
 
     # For limit=0: no API calls, but we still output as many rows as the dataset contains.
     do_api_calls = (spec.limit_mode != "0")
+    
+    rag_cfg: Optional[RagConfig] = None
+    rag_retriever: Optional[RagRetriever] = None
+    rag_context_by_row_id: Dict[Any, str] = {}
+
+    if spec.rag and do_api_calls:
+        rag_cfg = RagConfig()
+        rag_retriever = RagRetriever.load(rag_cfg)
+
+        queries = df_eval["sentence"].astype(str).tolist()
+        rag_passages_per_query = rag_retriever.retrieve_batch(queries, top_k=rag_cfg.top_k)
+        rag_context_texts = [format_rag_context(p, rag_cfg) for p in rag_passages_per_query]
+        rag_context_by_row_id = dict(zip(df_eval.index.tolist(), rag_context_texts))
 
     # Build chain once per model
     chain = None
     if do_api_calls:
         chain = build_chain(spec.model_name, temperature=0.0, max_tokens=64)
+
+    # --- Gemini rate limiting (per-minute) ---
+    is_gemini = spec.model_name.lower().startswith("gemini:")
+    gemini_min_interval_s = 0.0
+    if is_gemini:
+        # default 6.6s ~= 9.09 RPM (safe under 10 RPM)
+        gemini_min_interval_s = float(os.getenv("GEMINI_MIN_REQUEST_INTERVAL_S", "6.6"))
+
+    next_gemini_slot = 0.0  # perf_counter timestamp
+
+    def gemini_throttle() -> None:
+        """Ensure a minimum spacing between Gemini requests."""
+        nonlocal next_gemini_slot
+        if gemini_min_interval_s <= 0:
+            return
+        now = time.perf_counter()
+        wait_s = next_gemini_slot - now
+        if wait_s > 0:
+            time.sleep(wait_s)
+        # schedule next slot from *now* (after sleep)
+        next_gemini_slot = time.perf_counter() + gemini_min_interval_s
+
 
     def _is_permanent_error(e: Exception) -> bool:
         msg = str(e).lower()
@@ -480,6 +704,10 @@ def evaluate(spec: RunSpec) -> None:
         def _do_call():
             return chain.invoke({"prompt": prompt_text})
 
+        # throttle applies to every attempt (including retries)
+        if is_gemini:
+            gemini_throttle()
+
         # any exception here will be handled by tenacity (unless permanent)
         reply = invoke_with_timeout(_do_call, timeout_s=timeout_s)
         if reply is None:
@@ -500,13 +728,26 @@ def evaluate(spec: RunSpec) -> None:
 
     rows_out: List[Dict[str, Any]] = []
 
-    for row_idx, (_, row) in enumerate(df_eval.iterrows()):
+    for row_idx, (row_id, row) in enumerate(df_eval.iterrows()):
         sentence = row["sentence"]
         opt_a = row["Option A"]
         opt_b = row["Option B"]
         gold = row["gold_ans"]  # 'A' or 'B'
 
-        prompt_text = PROMPT_TEMPLATE.format(sentence=sentence, opt_a=opt_a, opt_b=opt_b)
+        if spec.rag and do_api_calls:
+            rag_ctx = rag_context_by_row_id.get(row_id, "(no relevant passages retrieved)")
+            prompt_text = PROMPT_TEMPLATE_RAG.format(
+                rag_context=rag_ctx,
+                sentence=sentence,
+                opt_a=opt_a,
+                opt_b=opt_b,
+            )
+        else:
+            prompt_text = PROMPT_TEMPLATE.format(
+                sentence=sentence,
+                opt_a=opt_a,
+                opt_b=opt_b,
+            )
 
         per_run: List[str] = []
         if not do_api_calls:
@@ -538,6 +779,8 @@ def evaluate(spec: RunSpec) -> None:
         out["repeats"] = spec.repeats
         out["limit_mode"] = spec.limit_mode
         out["rag"] = spec.rag
+        if spec.rag and do_api_calls:
+            out["rag_context"] = rag_context_by_row_id.get(row_id, "")
 
         # Store raw votes + final
         for k, c in enumerate(per_run, start=1):
