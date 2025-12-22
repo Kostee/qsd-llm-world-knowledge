@@ -8,8 +8,6 @@ MODELS=(
   "gpt-4o"
   "gpt-5.1"
   "gpt-4o-mini"
-  "o3-mini"
-  "gpt-5-nano"
   "gpt-4-0613"
 
   # Qwen (DashScope)

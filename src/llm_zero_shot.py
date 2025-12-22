@@ -14,7 +14,7 @@ Key features:
 - Majority vote over N repeats (default 5); tie -> random
 - Writes per-run outputs under results/<run_id>/
 - Skips work if outputs already exist
-- RAG flag exists but is NOT implemented yet (placeholder)
+- Optional RAG: FAISS+SentenceTransformers retriever over prebuilt artifacts (ConceptNet + Simple Wikipedia)
 
 Run from repository root.
 """
@@ -49,7 +49,6 @@ except Exception:
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
-
 
 # ---------------------------------------------------------------------------
 # RAG utilities (ConceptNet + Simple Wikipedia)
@@ -222,9 +221,8 @@ ENV_QWEN = "QWEN_API_KEY"
 ENV_OPENROUTER = "OPENROUTER_API_KEY"
 ENV_GOOGLE = "GOOGLE_API_KEY"
 
-
 # -----------------------------
-# Model Factory (from Maćkowy code, repo-ready)
+# Model Factory
 # -----------------------------
 
 class ModelFactory:
@@ -237,16 +235,6 @@ class ModelFactory:
     - openrouter: -> OpenRouter (e.g., "openrouter:meta-llama/llama-3.1-8b-instruct")
     - gemini:     -> Google AI (e.g., "gemini:gemini-1.5-pro")
     """
-    @staticmethod
-    def _is_openai_reasoning_model(model_name: str) -> bool:
-        """
-        OpenAI reasoning models (o-series) do NOT support sampling params like
-        temperature/top_p. Example: o3-mini.
-        """
-        name = (model_name or "").strip().lower()
-        # Matches: o1, o1-mini, o3-mini, o3-mini-high, etc.
-        return bool(re.match(r"^o\d", name))
-
     @staticmethod
     def create(model_name: str, temperature: float = 0.0, max_tokens: int = 10):
         model_lower = model_name.lower()
@@ -261,42 +249,10 @@ class ModelFactory:
 
     @classmethod
     def _create_openai(cls, model_name: str, temperature: float, max_tokens: int) -> Any:
-
-        """
-        Create an OpenAI chat model.
-
-        NOTE:
-        - Reasoning models (o-series) reject `temperature` (and other sampling params).
-        - Some client libraries also set defaults; we explicitly null them out.
-        """
         api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
             raise RuntimeError("OPENAI_API_KEY is not set")
 
-        if cls._is_openai_reasoning_model(model_name):
-            # Do NOT pass temperature to reasoning models.
-            # Also keep the request minimal to avoid other unsupported params.
-            llm = ChatOpenAI(
-                model=model_name,
-                api_key=api_key,
-                # Keep max_tokens if your lib supports it; prompt already forces 1-char output anyway.
-                max_tokens=max_tokens,
-            )
-
-            # Defensive: some wrappers keep defaults and still send them.
-            # We ensure sampling params are absent.
-            try:
-                setattr(llm, "temperature", None)
-            except Exception:
-                pass
-
-            if hasattr(llm, "model_kwargs") and isinstance(llm.model_kwargs, dict):
-                llm.model_kwargs.pop("temperature", None)
-                llm.model_kwargs.pop("top_p", None)
-
-            return llm
-
-        # Standard chat models (gpt-4o/gpt-5.1/etc.)
         return ChatOpenAI(
             model=model_name,
             api_key=api_key,
@@ -477,16 +433,14 @@ def majority_vote(choices: List[str], rng: random.Random) -> str:
 
 
 def build_chain(model_name: str, temperature: float = 0.0, max_tokens: int = 64):
-    """
-    Create a prompt -> LLM -> parser chain.
-    """
+    prompt_template = ChatPromptTemplate.from_messages(
+        [
+            ("system", SYSTEM_MESSAGE),
+            ("human", "{prompt}"),
+        ]
+    )
     llm = ModelFactory.create(model_name, temperature=temperature, max_tokens=max_tokens)
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", SYSTEM_MESSAGE),
-        ("user", "{prompt}"),
-    ])
-    return prompt | llm | StrOutputParser()
-
+    return prompt_template | llm | StrOutputParser()
 
 # -----------------------------
 # Metrics
@@ -704,6 +658,7 @@ def evaluate(spec: RunSpec) -> None:
         def _do_call():
             return chain.invoke({"prompt": prompt_text})
 
+
         # throttle applies to every attempt (including retries)
         if is_gemini:
             gemini_throttle()
@@ -712,6 +667,7 @@ def evaluate(spec: RunSpec) -> None:
         reply = invoke_with_timeout(_do_call, timeout_s=timeout_s)
         if reply is None:
             raise ValueError("Empty response: None")
+        
         reply = str(reply).strip()
         if not reply:
             raise ValueError("Empty response: ''")
@@ -826,7 +782,7 @@ def evaluate(spec: RunSpec) -> None:
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="QSD LLM zero-shot evaluation (baseline; RAG placeholder).")
+    p = argparse.ArgumentParser(description="QSD LLM zero-shot evaluation (supports optional RAG).")
     p.add_argument(
         "--dataset",
         type=str,
@@ -842,7 +798,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--rag",
         action="store_true",
-        help="Enable RAG mode (NOT IMPLEMENTED YET).",
+        help="Enable RAG mode (retrieval from prebuilt FAISS index + passages).",
     )
     p.add_argument(
         "--model",
