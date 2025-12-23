@@ -18,9 +18,11 @@ MODELS=(
 
   # OpenRouter
   "openrouter:meta-llama/llama-3.1-8b-instruct"
-  "openrouter:google/gemma-2-9b-it"
   "openrouter:mistralai/mistral-small-3.2-24b-instruct"
   "openrouter:meta-llama/llama-3.1-70b-instruct"
+  "openrouter:cohere/command-r-plus-08-2024"
+  "openrouter:mistralai/mixtral-8x22b-instruct"
+  "openrouter:deepseek/deepseek-chat-v3.1"
 )
 
 # RAG runs: recommended only for balanced
