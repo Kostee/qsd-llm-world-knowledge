@@ -1,0 +1,441 @@
+item_id,sentence,Option A,Option B,gold_ans,gold_scope_label,comb
+1,A book is given to each student in the class.,"In total, more than one book is given.","In total, one book is given.",A,inverse,3
+2,A new episode is released every week.,Different episodes are released each week.,The same episode is released every week.,A,inverse,3
+3,A gift is given to each employee at the end of the year.,"In total, more than one gift is given.","In total, one gift is given.",A,inverse,3
+4,A different dish is served each day of the week.,There are more than two dishes served in total.,There are exactly two dishes served in total.,A,inverse,3
+5,A new song is played every hour on the radio.,The same song is played every hour.,Different songs are played each hour.,B,inverse,3
+6,A new flavor is introduced every month.,Different flavors are introduced in different months.,The same flavor is introduced every month.,A,inverse,3
+7,A new exhibit is displayed every week.,Different exhibits are displayed in different weeks.,The same exhibit is displayed every week.,A,inverse,3
+8,A piece of candy is given to each child at the event.,"In total, more than one piece of candy is given.","In total, one piece of candy is given.",A,inverse,3
+9,A snack is provided to each participant in the workshop.,"In total, more than one snack is provided.","In total, one snack is provided.",A,inverse,3
+10,A newsletter is sent to each subscriber every month.,"In total, more than one newsletter is sent.","In total, one newsletter is sent.",A,inverse,3
+11,A new topic is covered every week in the course.,The same topic is covered every week.,Different topics are covered in different weeks.,B,inverse,3
+12,The chef prepares exactly three dishes for each table.,All tables receive the same three dishes,Not all tables receive the same three dishes,B,inverse,3
+13,Exactly two gifts are given to each guest.,All guests receive the same two gifts,Not all guests receive the same two gifts,B,inverse,3
+14,The artist paints exactly one mural on each wall.,Not all walls have the same mural,All walls have the same mural,A,inverse,3
+15,Exactly four cookies are placed in each box.,All boxes contain the same four cookies,Not all boxes contain the same four cookies,B,inverse,3
+16,The instructor assigns exactly one project to each student.,Not all students receive the same project,All students receive the same project,A,inverse,3
+17,Exactly three books are given to each participant.,Not all participants receive the same three books,All participants receive the same three books,A,inverse,3
+18,The manager allocates exactly two hours to each task.,All tasks take the same two hours,Not all tasks take the same two hours,A,inverse,3
+19,Exactly one flower is planted in each pot.,All pots have the same flower,Not all pots have the same flower,B,inverse,3
+20,The musician plays exactly one song for each audience.,Not all audiences hear the same song,All audiences hear the same song,A,inverse,3
+21,Exactly two paintings are displayed in each gallery.,All galleries display the same two paintings,Not all galleries display the same two paintings,B,inverse,3
+22,The instructor gives exactly two examples for each concept.,Not all concepts have the same two examples,All concepts have the same two examples,A,inverse,3
+23,The instructor assigns exactly one exercise to each participant.,Not all participants receive the same exercise,All participants receive the same exercise,A,inverse,3
+24,Exactly five flowers are planted in each pot.,Not all pots have the same five flowers,All pots have the same five flowers,A,inverse,3
+25,Exactly two pens are provided to each participant.,Not all participants receive the same two pens,All participants receive the same two pens,A,inverse,3
+26,The instructor gives exactly one lesson to each class.,Not all classes receive the same lesson,All classes receive the same lesson,A,inverse,3
+27,The organizer provides exactly one map to each attendee.,Not all attendees receive the same map,All attendees receive the same map,B,inverse,3
+28,Exactly four chairs are placed at each table.,All tables have the same four chairs,Not all tables have the same four chairs,B,inverse,3
+29,Exactly two guards are stationed at each entrance.,Not all entrances have the same two guards,All entrances have the same two guards,A,inverse,3
+30,The teacher assigns exactly one book to each student.,Not all students read the same book,All students read the same book,A,inverse,3
+31,The artist painted every canvas with one brush.,all the canvases were painted with the same brush,not all the canvases were painted with the same brush,A,inverse,4
+32,All the students submitted their assignments to one teacher.,not all the assignments were submitted to the same teacher,all the assignments were submitted to the same teacher,B,inverse,4
+33,The chef cooked each dish using exactly one pan.,all the dishes were cooked using the same pan,not all the dishes were cooked using the same pan,A,inverse,4
+34,Every chapter was written by one author.,all the chapters were written by the same author,not all the chapters were written by the same author,A,inverse,4
+35,All the emails were sent from one account.,not all the emails were sent from the same account,all the emails were sent from the same account,B,inverse,4
+36,All the songs were recorded in one studio.,all the songs were recorded in the same studio,not all the songs were recorded in the same studio,A,inverse,4
+37,The teacher assigned every project to one group.,not all the projects were assigned to the same group,all the projects were assigned to the same group,B,inverse,4
+38,Each photograph was taken with one camera.,not all the photographs were taken with the same camera,all the photographs were taken with the same camera,B,inverse,4
+39,All the articles were published in one journal.,all the articles were published in the same journal,not all the articles were published in the same journal,A,inverse,4
+40,The chef used every spice in exactly one dish.,not all the spices were used in the same dish,all the spices were used in the same dish,B,inverse,4
+41,The musician played every note on one instrument.,not all the notes were played on the same instrument,all the notes were played on the same instrument,B,inverse,4
+42,All the data was stored in one database.,all the data was stored in the same database,not all the data was stored in the same database,A,inverse,4
+43,The director filmed every scene in one location.,not all the scenes were filmed in the same location,all the scenes were filmed in the same location,B,inverse,4
+44,Each piece of jewelry was crafted for one collection.,not all the pieces were crafted for the same collection,all the pieces were crafted for the same collection,A,inverse,4
+45,Every car was parked in one garage.,all the cars were parked in the same garage,not all the cars were parked in the same garage,A,inverse,4
+46,The musician played every song on one instrument.,not all the songs were played on the same instrument,all the songs were played on the same instrument,B,inverse,4
+47,Every chapter was written in one notebook.,all the chapters were written in the same notebook,not all the chapters were written in the same notebook,A,inverse,4
+48,The photographer captured each moment with one camera.,not all the moments were captured with the same camera,all the moments were captured with the same camera,B,inverse,4
+49,All the clothes were washed in one machine.,not all the clothes were washed in the same machine,all the clothes were washed in the same machine,B,inverse,4
+50,The artist painted every portrait in exactly one studio.,all the portraits were painted in the same studio,not all the portraits were painted in the same studio,A,inverse,4
+51,The chef prepared each dish with one type of spice.,not all the dishes were prepared with the same type of spice,all the dishes were prepared with the same type of spice,A,inverse,4
+52,Every chapter was written by exactly one author.,not all the chapters were written by the same author,all the chapters were written by the same author,B,inverse,4
+53,All the cars are parked in one garage.,all the cars are parked in the same garage,not all the cars are parked in the same garage,B,inverse,4
+54,The gardener planted every seed in exactly one plot.,not all the seeds were planted in the same plot,all the seeds were planted in the same plot,B,inverse,4
+55,Each document was stored in one folder.,all the documents were stored in the same folder,not all the documents were stored in the same folder,B,inverse,4
+56,All the photos were taken with one camera.,all the photos were taken with the same camera,not all the photos were taken with the same camera,B,inverse,4
+57,The artist painted every canvas with exactly one brush.,all the canvases were painted with the same brush,not all the canvases were painted with the same brush,A,inverse,4
+58,The chef used each spice in exactly one dish.,not all the spices were used in the same dish,all the spices were used in the same dish,B,inverse,4
+59,All the cars were parked in one garage.,not all the cars were parked in the same garage,all the cars were parked in the same garage,A,inverse,4
+60,Every book was placed on one shelf.,all the books were placed on the same shelf,not all the books were placed on the same shelf,B,inverse,4
+61,The director filmed each scene in one location.,all the scenes were filmed in the same location,not all the scenes were filmed in the same location,B,inverse,4
+62,Every photograph was taken with one camera.,not all the photographs were taken with the same camera,all the photographs were taken with the same camera,B,inverse,4
+63,Every article was published in one journal.,not all the articles were published in the same journal,all the articles were published in the same journal,B,inverse,4
+64,All the students submitted their assignments to one portal.,not all the assignments were submitted to the same portal,all the assignments were submitted to the same portal,B,inverse,4
+65,Every chapter was printed in one book.,not all the chapters were printed in the same book,all the chapters were printed in the same book,B,inverse,4
+66,All the files were saved in one folder.,all the files were saved in the same folder,not all the files were saved in the same folder,A,inverse,4
+67,Every song was recorded in one studio.,all the songs were recorded in the same studio,not all the songs were recorded in the same studio,A,inverse,4
+68,All the keys are kept in one drawer.,all the keys are kept in the same drawer,not all the keys are kept in the same drawer,A,inverse,4
+69,The photographer captured each image with one camera.,not all the images were captured with the same camera,all the images were captured with the same camera,B,inverse,4
+70,Every letter was delivered to one address.,all the letters were delivered to the same address,not all the letters were delivered to the same address,A,inverse,4
+71,All the letters were sent from one post office.,all the letters were sent from the same post office,not all the letters were sent from the same post office,A,inverse,4
+72,Each document was printed from one printer.,not all the documents were printed from the same printer,all the documents were printed from the same printer,B,inverse,4
+73,All the songs were recorded in one session.,not all the songs were recorded in the same session,all the songs were recorded in the same session,A,inverse,4
+74,All the emails were sent to exactly one address.,not all the emails were sent to the same address,all the emails were sent to the same address,B,inverse,4
+75,A teacher instructs every student in the class.,"in total, there is more than one teacher instructing the students","in total, there is exactly one teacher instructing the students",B,surface,2
+76,A doctor examines all the patients in the clinic.,"in total, there is exactly one doctor examining the patients","in total, there is more than one doctor examining the patients",A,surface,2
+77,A manager oversees every project in the company.,"in total, there is more than one manager overseeing the projects","in total, there is exactly one manager overseeing the projects",B,surface,2
+78,A conductor leads all the musicians in the orchestra.,"in total, there is more than one conductor leading the musicians","in total, there is exactly one conductor leading the musicians",B,surface,2
+79,A pilot flies every plane in the fleet.,"in total, there is more than one pilot flying the planes","in total, there is exactly one pilot flying the planes",B,surface,2
+80,A nurse attends to all the patients in the ward.,the same nurse attends to all the patients,different nurses attend to different patients,A,surface,2
+81,A teacher grades every assignment.,"in total, there is more than one teacher grading the assignments","in total, there is exactly one teacher grading the assignments",B,surface,2
+82,A librarian organizes every book on the shelf.,"in total, there is exactly one librarian organizing the books","in total, there is more than one librarian organizing the books",A,surface,2
+83,A coach trains every athlete on the team.,"in total, there is exactly one coach training the athletes","in total, there is more than one coach training the athletes",A,surface,2
+84,A chef cooks every dish in the restaurant.,"in total, there is exactly one chef cooking the dishes","in total, there is more than one chef cooking the dishes",A,surface,2
+85,One artist was featured in all the galleries.,Every gallery featured the same artist,Not every gallery featured the same artist,A,surface,2
+86,Three dishes were served at all the events.,All events served the same three dishes,Not all events served the same three dishes,A,surface,2
+87,Two managers oversaw all the departments.,The same two managers oversaw all the departments,Different managers oversaw different departments,A,surface,2
+88,Three artists performed at all the festivals this year.,The same three artists performed at all the festivals,Different artists performed at different festivals,A,surface,2
+89,One manager oversees every department in the company.,Different managers oversee different departments,The same manager oversees every department,B,surface,2
+90,Two directors managed all the projects this quarter.,The same two directors managed all the projects,Different directors managed different projects,A,surface,2
+91,Five dishes were served at all events.,Different dishes were served at different events,The same five dishes were served at all events,B,surface,2
+92,Two directors are responsible for every film in the series.,The same two directors are responsible for every film,Different directors are responsible for different films,A,surface,2
+93,Five volunteers helped at all the events last month.,Different volunteers helped at different events,The same five volunteers helped at all the events,B,surface,2
+94,Two of the directors attended every meeting.,The same two directors attended every meeting,Different directors attended different meetings,A,surface,2
+95,Two of the authors contributed to every chapter of the book.,The same two authors contributed to every chapter,Different authors contributed to different chapters,A,surface,2
+96,Two doctors attended to all patients.,Different doctors attended to different patients,The same two doctors attended to all patients,B,surface,2
+97,Five books were recommended to every student.,The same five books were recommended to every student,Different books were recommended to different students,A,surface,2
+98,Every musician in the orchestra plays an instrument.,there is exactly one instrument in total,there is more than one instrument in total,B,surface,1
+99,Each artist in the gallery has a painting on display.,there is more than one painting in total,there is exactly one painting in total,A,surface,1
+100,Every car in the parking lot has a license plate.,there is more than one license plate in total,there is exactly one license plate in total,A,surface,1
+101,Each book on the shelf has a unique cover.,there is more than one cover in total,there is exactly one cover in total,A,surface,1
+102,Each participant in the study received a questionnaire.,there is more than one questionnaire in total,there is exactly one questionnaire in total,A,surface,1
+103,Every house on the street has a mailbox.,there is more than one mailbox in total,there is exactly one mailbox in total,A,surface,1
+104,Each student in the school has a locker.,there is more than one locker in total,there is exactly one locker in total,A,surface,1
+105,Every bird in the aviary has a perch.,there is exactly one perch in total,there is more than one perch in total,B,surface,1
+106,Each member of the team has a task to complete.,there is more than one task in total,there is exactly one task in total,A,surface,1
+107,Each artist in the gallery has a unique style.,there is exactly one style in total,there is more than one style in total,B,surface,1
+108,Every flower in the garden has a color.,there is more than one color in total,there is exactly one color in total,A,surface,1
+109,Each employee in the company has a role.,there is exactly one role in total,there is more than one role in total,B,surface,1
+110,Every student in the school wears a uniform.,all students wear the same uniform,not all students wear the same uniform,A,surface,1
+111,Each room in the hotel has a view.,there is more than one view in total,there is exactly one view in total,A,surface,1
+112,Each guest at the party received a gift.,there is more than one gift in total,there is exactly one gift in total,A,surface,1
+113,Every book in the library has a different author.,there is exactly one author in total,there is more than one author in total,B,surface,1
+114,Each car in the showroom has a different color.,there is exactly one color in total,there is more than one color in total,B,surface,1
+115,Every room in the house has a window.,there is exactly one window in total,there is more than one window in total,B,surface,1
+116,Every animal in the zoo has a habitat.,there is exactly one habitat in total,there is more than one habitat in total,B,surface,1
+117,Each child in the class has a backpack.,there is exactly one backpack in total,there is more than one backpack in total,B,surface,1
+118,Each student receives exactly three pencils.,Not all students receive the exact same three pencils,All students receive the exact same three pencils,A,surface,1
+119,Every room has exactly two windows.,All rooms have the exact same two windows,Not all rooms have the exact same two windows,B,surface,1
+120,Each child gets one balloon.,All children get the same balloon,Not all children get the same balloon,B,surface,1
+121,Every participant receives exactly one certificate.,Not all participants receive the exact same certificate,All participants receive the exact same certificate,A,surface,1
+122,Each guest is served exactly two dishes.,All guests are served the exact same two dishes,Not all guests are served the exact same two dishes,B,surface,1
+123,Each box contains exactly five apples.,Not all boxes contain the exact same five apples,All boxes contain the exact same five apples,A,surface,1
+124,Each participant receives exactly two tickets.,All participants receive the exact same two tickets,Not all participants receive the exact same two tickets,B,surface,1
+125,Each employee is assigned exactly one task.,Not all employees are assigned the same task,All employees are assigned the same task,A,surface,1
+126,Each table is set with exactly four chairs.,Not all tables are set with the exact same four chairs,All tables are set with the exact same four chairs,A,surface,1
+127,Each team has exactly five players.,All teams have the exact same five players,Not all teams have the exact same five players,B,surface,1
+128,A new lesson is taught every day.,The same lesson is taught every day.,Different lessons are taught each day.,B,inverse,3
+129,A new feature is added to the app every update.,Different features are added in different updates.,The same feature is added every update.,A,inverse,3
+130,A new chapter is released every month.,Different chapters are released each month.,The same chapter is released every month.,A,inverse,3
+131,A new model is launched every year.,The same model is launched every year.,Different models are launched each year.,B,inverse,3
+132,A new article is published every day.,Different articles are published each day.,The same article is published every day.,A,inverse,3
+133,A new task is assigned every morning.,The same task is assigned every morning.,Different tasks are assigned each morning.,B,inverse,3
+134,A new book is added to the library each month.,Different books are added each month.,The same book is added every month.,A,inverse,3
+135,A new theme is chosen for each event.,Different themes are chosen for different events.,The same theme is chosen for each event.,A,inverse,3
+136,A new book is published every season.,The same book is published every season.,Different books are published each season.,B,inverse,3
+137,A new game is released every month.,Different games are released each month.,The same game is released every month.,A,inverse,3
+138,The chef serves exactly one dessert to each diner.,Not all diners receive the same dessert,All diners receive the same dessert,A,inverse,3
+139,The librarian issues exactly one card to each member.,All members receive the same card,Not all members receive the same card,B,inverse,3
+140,Exactly two tickets are given to each attendee.,All attendees receive the same two tickets,Not all attendees receive the same two tickets,B,inverse,3
+141,The gardener plants exactly one bush in each corner.,All corners have the same bush,Not all corners have the same bush,B,inverse,3
+142,Exactly three prizes are awarded to each winner.,All winners receive the same three prizes,Not all winners receive the same three prizes,B,inverse,3
+143,Exactly two chairs are placed at each table.,All tables have the same two chairs,Not all tables have the same two chairs,B,inverse,3
+144,Exactly four pencils are distributed to each student.,Not all students receive the same four pencils,All students receive the same four pencils,A,inverse,3
+145,Exactly two keys are given to each tenant.,All tenants receive the same two keys,Not all tenants receive the same two keys,B,inverse,3
+146,Exactly three ornaments are hung on each tree.,Not all trees have the same three ornaments,All trees have the same three ornaments,A,inverse,3
+147,The coach assigns exactly three drills to each player.,All players perform the same three drills.,Not all players perform the same three drills.,A,inverse,3
+148,Every participant registered through one website.,not all the participants registered through the same website,all the participants registered through the same website,B,inverse,4
+149,Every athlete trained at one facility.,all the athletes trained at the same facility,not all the athletes trained at the same facility,A,inverse,4
+150,The teacher graded all the exams with one rubric.,not all the exams were graded with the same rubric,all the exams were graded with the same rubric,B,inverse,4
+151,All the reports were compiled into one document.,all the reports were compiled into the same document,not all the reports were compiled into the same document,A,inverse,4
+152,The director filmed every scene with one camera.,not all the scenes were filmed with the same camera,all the scenes were filmed with the same camera,B,inverse,4
+153,Every chapter was edited by one editor.,all the chapters were edited by the same editor,not all the chapters were edited by the same editor,A,inverse,4
+154,The author wrote each book in one genre.,not all the books were written in the same genre,all the books were written in the same genre,A,inverse,4
+155,The scientist analyzed each sample in one lab.,all the samples were analyzed in the same lab,not all the samples were analyzed in the same lab,B,inverse,4
+156,All the software was installed on one computer.,all the software was installed on the same computer,not all the software was installed on the same computer,A,inverse,4
+157,Every car was parked in exactly one garage.,not all the cars were parked in the same garage,all the cars were parked in the same garage,B,inverse,4
+158,All the reports were reviewed by exactly one committee.,all the reports were reviewed by the same committee,not all the reports were reviewed by the same committee,A,inverse,4
+159,The writer wrote each chapter in one notebook.,all the chapters were written in the same notebook,not all the chapters were written in the same notebook,B,inverse,4
+160,Every piece of furniture was crafted in one workshop.,all the pieces of furniture were crafted in the same workshop,not all the pieces of furniture were crafted in the same workshop,B,inverse,4
+161,All the data was stored in exactly one database.,not all the data was stored in the same database,all the data was stored in the same database,B,inverse,4
+162,Every document was printed from one printer.,all the documents were printed from the same printer,not all the documents were printed from the same printer,B,inverse,4
+163,All the clothes were designed for one fashion show.,all the clothes were designed for the same fashion show,not all the clothes were designed for the same fashion show,B,inverse,4
+164,Every painting was displayed in one gallery.,all the paintings were displayed in the same gallery,not all the paintings were displayed in the same gallery,B,inverse,4
+165,All the recipes were written in one cookbook.,all the recipes were written in the same cookbook,not all the recipes were written in the same cookbook,B,inverse,4
+166,The musician played every song on exactly one instrument.,all the songs were played on the same instrument,not all the songs were played on the same instrument,A,inverse,4
+167,The writer published each article in one magazine.,all the articles were published in the same magazine,not all the articles were published in the same magazine,B,inverse,4
+168,Every photo was developed in one lab.,not all the photos were developed in the same lab,all the photos were developed in the same lab,A,inverse,4
+169,The scientist stored each sample in one freezer.,all the samples were stored in the same freezer,not all the samples were stored in the same freezer,B,inverse,4
+170,Every piece of furniture was made from one type of wood.,all the furniture was made from the same type of wood,not all the furniture was made from the same type of wood,B,inverse,4
+171,The athlete wore each uniform for one event.,not all the uniforms were worn for the same event,all the uniforms were worn for the same event,A,inverse,4
+172,All the paintings were displayed in one gallery.,all the paintings were displayed in the same gallery,not all the paintings were displayed in the same gallery,A,inverse,4
+173,The chef cooked each meal using one stove.,all the meals were cooked using the same stove,not all the meals were cooked using the same stove,B,inverse,4
+174,Every book was borrowed from one library.,all the books were borrowed from the same library,not all the books were borrowed from the same library,B,inverse,4
+175,Each letter was typed on one keyboard.,all the letters were typed on the same keyboard,not all the letters were typed on the same keyboard,B,inverse,4
+176,The writer drafted every chapter in one notebook.,all the chapters were drafted in the same notebook,not all the chapters were drafted in the same notebook,B,inverse,4
+177,The teacher graded every paper with one pen.,not all the papers were graded with the same pen,all the papers were graded with the same pen,A,inverse,4
+178,All the files were backed up to one server.,not all the files were backed up to the same server,all the files were backed up to the same server,A,inverse,4
+179,The chef cooked every meal in one kitchen.,not all the meals were cooked in the same kitchen,all the meals were cooked in the same kitchen,A,inverse,4
+180,Each painting was displayed in one gallery.,not all the paintings were displayed in the same gallery,all the paintings were displayed in the same gallery,A,inverse,4
+181,The musician composed each song for one album.,not all the songs were composed for the same album,all the songs were composed for the same album,B,inverse,4
+182,The chef cooked every dish in exactly one kitchen.,not all the dishes were cooked in the same kitchen,all the dishes were cooked in the same kitchen,B,inverse,4
+183,The gardener planted each seed in one plot.,not all the seeds were planted in the same plot,all the seeds were planted in the same plot,B,inverse,4
+184,All the photographs were taken with one camera.,not all the photographs were taken with the same camera,all the photographs were taken with the same camera,B,inverse,4
+185,The scientist conducted each test in one lab.,all the tests were conducted in the same lab,not all the tests were conducted in the same lab,A,inverse,4
+186,Every piece of art was displayed in one gallery.,not all the art was displayed in the same gallery,all the art was displayed in the same gallery,B,inverse,4
+187,The athlete trained every day in one gym.,not all the training sessions were in the same gym,all the training sessions were in the same gym,B,inverse,4
+188,Each recipe was cooked in one kitchen.,not all the recipes were cooked in the same kitchen,all the recipes were cooked in the same kitchen,B,inverse,4
+189,All the meetings were held in one room.,not all the meetings were held in the same room,all the meetings were held in the same room,B,inverse,4
+190,A janitor cleans every room in the building.,"in total, there is exactly one janitor cleaning the rooms","in total, there is more than one janitor cleaning the rooms",A,surface,2
+191,A technician repairs every computer in the office.,"in total, there is exactly one technician repairing the computers","in total, there is more than one technician repairing the computers",A,surface,2
+192,A farmer tends to all the crops in the field.,"in total, there is exactly one farmer tending to the crops","in total, there is more than one farmer tending to the crops",B,surface,2
+193,A firefighter extinguishes every fire in the neighborhood.,"in total, there is exactly one firefighter extinguishing the fires","in total, there is more than one firefighter extinguishing the fires",A,surface,2
+194,A scientist conducts all the experiments in the lab.,"in total, there is more than one scientist conducting the experiments","in total, there is exactly one scientist conducting the experiments",A,surface,2
+195,A driver operates every bus in the fleet.,"in total, there is exactly one driver operating the buses","in total, there is more than one driver operating the buses",A,surface,2
+196,A musician plays all the instruments in the band.,"in total, there is exactly one musician playing the instruments","in total, there is more than one musician playing the instruments",B,surface,2
+197,A painter decorates every wall in the house.,"in total, there is more than one painter decorating the walls","in total, there is exactly one painter decorating the walls",B,surface,2
+198,A photographer captures every moment at the event.,"in total, there is more than one photographer capturing the moments","in total, there is exactly one photographer capturing the moments",B,surface,2
+199,A tailor sews all the clothes in the shop.,"in total, there is more than one tailor sewing the clothes","in total, there is exactly one tailor sewing the clothes",A,surface,2
+200,A baker bakes all the bread in the bakery.,"in total, there is more than one baker baking the bread","in total, there is exactly one baker baking the bread",A,surface,2
+201,An artist paints all the canvases in the studio.,"in total, there is exactly one artist painting the canvases","in total, there is more than one artist painting the canvases",B,surface,2
+202,An engineer designs every bridge in the city.,"in total, there is more than one engineer designing the bridges","in total, there is exactly one engineer designing the bridges",B,surface,2
+203,An architect drafts all the blueprints for the buildings.,"in total, there is more than one architect drafting the blueprints","in total, there is exactly one architect drafting the blueprints",A,surface,2
+204,An editor reviews every article in the magazine.,"in total, there is more than one editor reviewing the articles","in total, there is exactly one editor reviewing the articles",B,surface,2
+205,A director oversees all the scenes in the movie.,"in total, there is more than one director overseeing the scenes","in total, there is exactly one director overseeing the scenes",A,surface,2
+206,A security guard monitors every camera in the building.,"in total, there is exactly one security guard monitoring the cameras","in total, there is more than one security guard monitoring the cameras",A,surface,2
+207,A driver transports every passenger to their destination.,"in total, there is more than one driver transporting the passengers","in total, there is exactly one driver transporting the passengers",B,surface,2
+208,A firefighter checks all the equipment in the station.,"in total, there is exactly one firefighter checking the equipment","in total, there is more than one firefighter checking the equipment",A,surface,2
+209,A mechanic services all the vehicles in the garage.,different mechanics service different vehicles,the same mechanic services all the vehicles,B,surface,2
+210,A veterinarian treats all the animals in the clinic.,"in total, there is more than one veterinarian treating the animals","in total, there is exactly one veterinarian treating the animals",B,surface,2
+211,A professor teaches every course in the department.,"in total, there is more than one professor teaching the courses","in total, there is exactly one professor teaching the courses",B,surface,2
+212,A coach plans every strategy for the team.,"in total, there is exactly one coach planning the strategies","in total, there is more than one coach planning the strategies",A,surface,2
+213,A writer drafts all the chapters in the book.,"in total, there is more than one writer drafting the chapters","in total, there is exactly one writer drafting the chapters",B,surface,2
+214,An artist creates all the artwork in the gallery.,different artists create different artwork,the same artist creates all the artwork,B,surface,2
+215,One artist painted all the murals in the gallery.,Different artists painted different murals,The same artist painted all the murals,B,surface,2
+216,One chef prepared all the meals for the banquet.,Different chefs prepared different meals,The same chef prepared all the meals,B,surface,2
+217,Two musicians played at every concert.,Different musicians played at different concerts,The same two musicians played at every concert,B,surface,2
+218,Two actors performed in every play.,The same two actors performed in every play,Different actors performed in different plays,A,surface,2
+219,Three students participated in all the competitions.,The same three students participated in all the competitions,Different students participated in different competitions,A,surface,2
+220,One author wrote all the articles for the magazine.,The same author wrote all the articles,Different authors wrote different articles,A,surface,2
+221,Two photographers captured every event.,The same two photographers captured every event,Different photographers captured different events,A,surface,2
+222,Three designers worked on all the projects.,The same three designers worked on all the projects,Different designers worked on different projects,A,surface,2
+223,One scientist conducted all the experiments.,The same scientist conducted all the experiments,Different scientists conducted different experiments,A,surface,2
+224,Three chefs prepared every dish.,Different chefs prepared different dishes,The same three chefs prepared every dish,B,surface,2
+225,Two editors reviewed every manuscript.,The same two editors reviewed every manuscript,Different editors reviewed different manuscripts,A,surface,2
+226,Three musicians played all the songs.,The same three musicians played all the songs,Different musicians played different songs,A,surface,2
+227,One architect designed all the buildings.,The same architect designed all the buildings,Different architects designed different buildings,A,surface,2
+228,Two nurses cared for every patient.,The same two nurses cared for every patient,Different nurses cared for different patients,A,surface,2
+229,Three players scored in every match of the tournament.,Different players scored in different matches,Every match had the same three players scoring,B,surface,2
+230,Four ingredients are used in every dish on the menu.,Different dishes contain different ingredients,Every dish contains the same four ingredients,B,surface,2
+231,Two actors starred in every movie of the series.,The same two actors starred in every movie,Different actors starred in different movies,A,surface,2
+232,Three judges evaluated every performance.,The same three judges evaluated every performance,Different judges evaluated different performances,A,surface,2
+233,Two designers created every outfit in the collection.,Different designers created different outfits,The same two designers created every outfit,B,surface,2
+234,Three volunteers organized every event.,The same three volunteers organized every event,Different volunteers organized different events,A,surface,2
+235,Three artists exhibited in every gallery.,The same three artists exhibited in every gallery,Different artists exhibited in different galleries,A,surface,2
+236,Three actors starred in every play this season.,Different plays featured different actors,Every play featured the same three actors,B,surface,2
+237,One gardener planted every tree in the park.,Different gardeners planted different trees,The same gardener planted every tree,B,surface,2
+238,Three directors oversaw every scene in the movie.,Different directors oversaw different scenes,The same three directors oversaw every scene,B,surface,2
+239,One recipe was used by every chef in the competition.,Different chefs used different recipes,Every chef used the same recipe,B,surface,2
+240,Five musicians played at all the events.,The same five musicians played at all events,Different musicians played at different events,A,surface,2
+241,One strategy was employed by all teams in the tournament.,Different teams used different strategies,All teams used the same strategy,B,surface,2
+242,Two engineers handled all the technical issues.,Different engineers handled different issues,The same two engineers handled all issues,B,surface,2
+243,Each book in the library has a barcode.,there is more than one barcode in total,there is exactly one barcode in total,A,surface,1
+244,Each participant in the marathon receives a medal.,there is more than one medal in total,there is exactly one medal in total,A,surface,1
+245,Each athlete in the team wears a jersey.,there is more than one jersey in total,there is exactly one jersey in total,A,surface,1
+246,Every book in the series has a different cover.,all books have the same cover,not all books have the same cover,B,surface,1
+247,Each member of the club has a badge.,there is exactly one badge in total,there is more than one badge in total,B,surface,1
+248,Every student in the class has a pencil.,there is more than one pencil in total,there is exactly one pencil in total,A,surface,1
+249,Each contestant in the show performs a song.,there is exactly one song in total,there is more than one song in total,B,surface,1
+250,Every bird in the aviary has a unique call.,all birds have the same call,not all birds have the same call,B,surface,1
+251,Each car in the race has a number.,there is exactly one number in total,there is more than one number in total,B,surface,1
+252,Each child in the daycare has a toy.,there is exactly one toy in total,there is more than one toy in total,B,surface,1
+253,Each member of the team has a role.,there is more than one role in total,there is exactly one role in total,A,surface,1
+254,Every tree in the orchard has a fruit.,there is more than one fruit in total,there is only one fruit in total,A,surface,1
+255,Each passenger on the flight has a seat.,there is exactly one seat in total,there is more than one seat in total,B,surface,1
+256,Every student in the class submits an assignment.,there is more than one assignment in total,there is exactly one assignment in total,A,surface,1
+257,Each child in the class has a favorite toy.,there is exactly one favorite toy in total,there is more than one favorite toy in total,B,surface,1
+258,Each musician in the band has a sheet of music.,there is exactly one sheet of music in total,there is more than one sheet of music in total,B,surface,1
+259,Every athlete in the competition has a coach.,there is more than one coach in total,there is exactly one coach in total,A,surface,1
+260,Each author in the anthology has a story.,there is exactly one story in total,there is more than one story in total,B,surface,1
+261,Every item in the store has a price tag.,there is more than one price tag in total,there is exactly one price tag in total,A,surface,1
+262,Every student receives exactly two textbooks.,not all students receive the exact same two textbooks,all students receive the exact same two textbooks,A,surface,1
+263,Every employee has exactly one locker.,not all employees have the exact same locker,all employees have the exact same locker,A,surface,1
+264,Every garden has exactly three trees.,all gardens have the exact same three trees,not all gardens have the exact same three trees,B,surface,1
+265,Each classroom has exactly one projector.,all classrooms have the exact same projector,not all classrooms have the exact same projector,B,surface,1
+266,Each musician plays exactly one instrument.,not all musicians play the exact same instrument,all musicians play the exact same instrument,A,surface,1
+267,Each cat has exactly one collar.,not all cats have the exact same collar,all cats have the exact same collar,A,surface,1
+268,Each dog has exactly one leash.,all dogs have the exact same leash,not all dogs have the exact same leash,B,surface,1
+269,Each bottle contains exactly one liter of water.,not all bottles contain the same liter of water,all bottles contain the same liter of water,A,surface,1
+270,Every bicycle has exactly two wheels.,not all bicycles have the exact same two wheels,all bicycles have the exact same two wheels,A,surface,1
+271,Every athlete wears exactly one uniform.,not all athletes wear the exact same uniform,all athletes wear the exact same uniform,A,surface,1
+272,Every student in the class has a different favorite book.,there are more than two favorite books in total,there are exactly two favorite books in total,A,surface,1
+273,Each member of the team plays a different sport.,there are more than two sports in total,there are exactly two sports in total,A,surface,1
+274,Every artist in the gallery uses a medium.,there is more than one medium in total,there is exactly one medium in total,A,surface,1
+275,Each of the five friends ordered a dish at the restaurant.,there is more than one dish in total,there is exactly one dish in total,A,surface,1
+276,Each scientist in the lab is working on a different project.,there are exactly two projects in total,there are more than two projects in total,B,surface,1
+277,Each of the three siblings has a hobby.,there is more than one hobby in total,there is exactly one hobby in total,A,surface,1
+278,Every country in the world has a flag.,there is exactly one flag in total,there is more than one flag in total,B,surface,1
+279,Each of the four seasons has a weather pattern.,there is exactly one weather pattern in total,there is more than one weather pattern in total,B,surface,1
+280,Every artist uses a type of brush.,there is more than one type of brush used by artists,there is only one type of brush used by all artists,A,surface,1
+281,Each chef in the competition uses a different recipe.,there are more than two recipes used in the competition,there are only two recipes used in the competition,A,surface,1
+282,Every planet in the solar system has an orbit.,there is more than one orbit across all planets in the solar system,there is only one orbit across all planets in the solar system,A,surface,1
+283,Each runner in the race has a pace.,all runners have the same pace,not all runners have the same pace,B,surface,1
+284,Every tree in the forest has a height.,there is more than one height across all trees in the forest,there is only one height across all trees in the forest,A,surface,1
+285,Each car in the parking lot has a color.,not all cars have the same color,all cars have the same color,A,surface,1
+286,Each chef in the restaurant is responsible for a dish.,there is more than one dish in total,there is exactly one dish in total,A,surface,1
+287,"The teachers in the school are X, Y, Z, P, Q, and R, who each teach a different subject.",there is more than one subject in total across teachers X-R,there is one subject in total across teachers X-R,A,surface,1
+288,Each engineer in the company is assigned to a project.,there is more than one project in total,there is exactly one project in total,A,surface,1
+289,Each member of the council represents a district.,there is more than one district represented in total,there is exactly one district represented in total,A,surface,1
+290,Each country in the United Nations has a representative.,not every country in the United Nations has the same representative,every country in the United Nations has the same representative,A,surface,1
+291,The coach assigns each player to a position on the field.,not all players are assigned to the same position,all players are assigned to the same position,A,surface,1
+292,The director assigns each actor to a role in the play.,not all actors have the same role,all actors have the same role,A,surface,1
+293,Each track on the playlist is by a band.,all tracks are by the same band,not all tracks are by the same band,B,surface,1
+294,Each of the five teams will play on a different day.,there is exactly one day in total during which the games take place,there is more than one day in total during which the games take place,B,surface,1
+295,Every country has a currency.,"in total, there is more than one currency","in total, there is only one currency",A,surface,1
+296,Each of the seven days of the week has a name.,there is only one name in total for the days,there is more than one name in total for the days,B,surface,1
+297,Every planet in the solar system has a size.,all planets have the same size,not all planets have the same size,B,surface,1
+298,Each team plays in a stadium.,not all teams play in the same stadium,all teams play in the same stadium,A,surface,1
+299,Each writer uses a writing style.,there is more than one writing style used in total,there is exactly one writing style used in total,A,surface,1
+300,Every city has a population size.,all cities have the same population size,not all cities have the same population size,B,surface,1
+301,"The characters in the book are X, Y, Z, W, V, U, T, and S, who each have a backstory.",There is more than one backstory in total across characters X-S,There is one backstory in total across characters X-S,A,surface,1
+302,Each student in the class will present a project.,there is exactly one project presented in total,there is more than one project presented in total,B,surface,1
+303,Exactly four players are needed for each team.,All teams have the same four players,Not all teams have the same four players,B,inverse,3
+304,The committee must include at least one representative from each department.,All departments send the same representative to the committee,Not all departments send the same representative to the committee,B,inverse,3
+305,The company provides at least one training session for each employee.,All employees attend the same training session,Not all employees attend the same training session,B,inverse,3
+306,Three apples are in each basket.,there are exactly three apples in total,there are more than three apples in total,B,inverse,3
+307,Exactly one flag flies on each building.,all buildings fly the same flag,not all buildings fly the same flag,B,inverse,3
+308,Two players are in each team.,there are exactly two players in total,there are more than two players in total,B,inverse,3
+309,Two slices of bread are in each sandwich.,there are more than two slices of bread in total,there are exactly two slices of bread in total,A,inverse,3
+310,"He has exactly two meetings with Johnson, and exactly one with each of the other colleagues.",There is exactly one meeting he has in total with the other colleagues,There is more than one meeting he has in total with the other colleagues,B,inverse,3
+311,"Exactly three tasks will be completed each day - one in the morning, one in the afternoon, and one in the evening - according to the following conditions.","In the span of a week, a total of more than three tasks are completed","In the span of a week, a total of exactly three tasks are completed",A,inverse,3
+312,He spends at least three hours in each project he undertakes.,"In total, he spends exactly three hours on projects.","In total, he spends more than three hours on projects.",B,inverse,3
+313,One driver per vehicle is needed.,Different drivers are needed for different vehicles.,The same driver can drive all vehicles.,A,inverse,3
+314,One teacher per class is assigned.,Not all classes have the same teacher,All classes have the same teacher,A,inverse,3
+315,One dish per chef is presented.,Not all chefs present the same dish,All chefs present the same dish,A,inverse,3
+316,Two pencils per person were distributed.,"In total, more than two pencils were distributed","In total, only two pencils were distributed",A,inverse,3
+317,Exactly five of the items will be assigned to each box.,All boxes will contain the same five items,Not all boxes will contain the same five items,B,inverse,3
+318,"Except for holidays, when the library is closed, exactly one librarian works each day.","in total, more than one librarian works during the week","in total, only one librarian works during the week",A,inverse,3
+319,Groups A and B will receive two new members each.,there are more than two new members in total,there are exactly two new members in total,A,inverse,3
+320,"One player per game, according to the following rules.",all games involve the same player,not all games involve the same player,B,inverse,3
+321,one bird per cage.,there is exactly one bird in total,there is more than one bird in total,B,inverse,3
+322,"One student per desk, according to the classroom rules.",not all desks are occupied by the same student,all desks are occupied by the same student,A,inverse,3
+323,The two actors in each scene do not play the same character as each other.,there is more than one pair of actors in total,there is exactly one pair of actors in total,B,surface,2
+324,A different movie is shown every night.,there are more than two movies shown in total,there are exactly two movies shown in total,A,inverse,3
+325,A gardener waters all the plants.,"in total, there is exactly one gardener watering the plants","in total, there is more than one gardener watering the plants",A,surface,2
+326,A different topic is covered in each lecture.,there are more than two topics covered in total,there are exactly two topics covered in total,A,inverse,3
+327,A lifeguard watches all the swimmers.,"in total, there is more than one lifeguard watching the swimmers","in total, there is exactly one lifeguard watching the swimmers",B,surface,2
+328,A computer is available on each floor of the library.,"In total, there is more than one computer available across all library floors","In total, there is one computer available across all library floors",A,inverse,3
+329,A lion is present in all major wildlife parks.,The same lion is present in all wildlife parks.,Different lions are present in different wildlife parks.,B,inverse,3
+330,There is a seatbelt in every vehicle.,the same seatbelt is present in every vehicle,not every vehicle has the same seatbelt,B,inverse,3
+331,A postal service exists in all cities nowadays.,all cities have the exact same postal service,not all cities have the same postal service,B,inverse,3
+332,A meal is provided to all passengers.,"in total, more than one meal is provided","in total, one meal is provided",A,inverse,3
+333,There is a tire in every bicycle.,the same tire is present in every bicycle,not every bicycle has the same tire,B,inverse,3
+334,A policeman patrols all the streets in the neighborhood.,different policemen patrol different streets,the same policeman patrols all the streets,B,surface,2
+335,A bird visits every feeder in the park.,the same bird visits all the feeders,different birds visit different feeders,A,surface,2
+336,A mailman delivers to all houses on the street.,different mailmen deliver to different houses,the same mailman delivers to all the houses,B,surface,2
+337,There is a computer in every office.,not every office has the same computer,the same computer is present in every office,A,inverse,3
+338,A fire extinguisher is present on each floor of the building.,"in total, there is one fire extinguisher present across all building floors","in total, there is more than one fire extinguisher present across all building floors",B,inverse,3
+339,A vending machine is present on each floor of the mall.,"in total, there is more than one vending machine present across all mall floors","in total, there is one vending machine present across all mall floors",A,inverse,3
+340,A unique code is assigned to all employees.,Not all employees have the same unique code,All employees have the exact same unique code,A,inverse,3
+341,A student asks each teacher for advice.,It is not the same student who asks each teacher for advice,The same student asks every teacher for advice,B,surface,2
+342,A cup of coffee is offered to each guest at the party.,"In total, one cup of coffee is offered","In total, more than one cup of coffee is offered",B,inverse,3
+343,A hospital is present in all cities.,Not all cities have the same hospital,All cities have the exact same hospital,A,inverse,3
+344,A printer is present in each department of the company.,"In total, there is one printer present across all company departments","In total, there is more than one printer present across all company departments",B,inverse,3
+345,There is a different painting in every room.,The same painting is present in every room,Not every room has the same painting,B,inverse,3
+346,There is a different plant in every window.,The same plant is present in every window,Not every window has the same plant,B,inverse,3
+347,Several ingredients are used in every recipe.,A potentially different group of ingredients are used in each recipe,The same ingredients are used in every recipe,A,inverse,3
+348,A few exercises are included in each workout.,Not every workout includes the same few exercises,Every workout includes the same few exercises,A,inverse,3
+349,Several factors influence every decision.,The same factors influence every decision,A potentially different group of factors influence each decision,B,inverse,3
+350,A few mistakes are found in every manuscript.,Different mistakes are found in each manuscript.,The same mistakes are found in every manuscript.,A,inverse,3
+351,A few cars break down on every road trip.,The same cars break down on every road trip.,Different cars break down on each road trip.,B,inverse,3
+352,A few students fail in every class.,Different students fail in each class.,The same students fail in every class.,A,inverse,3
+353,Several challenges are faced in every project.,The same challenges are faced in every project.,Different challenges are faced in each project.,B,inverse,3
+354,Several solutions exist for every problem.,A potentially different set of solutions exist for each problem.,The same solutions exist for every problem.,A,inverse,3
+355,Some opportunities are available in any career.,"In each career, a potentially different set of opportunities is available.",The same opportunities are available in every career.,A,inverse,3
+356,Several strategies are used in every game.,The same strategies are used in every game.,A potentially different set of strategies is used in each game.,B,inverse,3
+357,Some animals live in every forest.,The same set of animals lives in every forest.,Different sets of animals live in different forests.,B,inverse,3
+358,A few key players influence every game.,Different key players influence each game.,The same key players influence every game.,B,surface,2
+359,Some unique features are present in all smartphones.,The same unique features are present in all smartphones.,Different unique features are present in different smartphones.,B,inverse,3
+360,Some hidden gems can be found in any city.,"In each city, a potentially different set of hidden gems can be found.",The same hidden gems can be found in every city.,A,inverse,3
+361,A few classic books are loved by every generation.,Different classic books are loved by each generation.,The same classic books are loved by every generation.,B,surface,2
+362,Some plants are found in all gardens.,Every garden has the same plants.,Not every garden has the same plants.,B,inverse,3
+363,Some techniques are applied in any art form.,The same techniques are applied in every art form.,Different art forms apply different techniques.,B,inverse,3
+364,Some birds can be seen in any part of the world.,Different birds can be seen in different parts of the world.,The same birds can be seen in every part of the world.,B,surface,2
+365,A few stars are visible from every location on Earth.,Different stars are visible from different locations on Earth.,The same stars are visible from every location on Earth.,B,surface,2
+366,Some songs are played every concert.,"each concert, the same songs are played","each concert, different songs are played",A,surface,2
+367,Some movies are watched every weekend.,"each weekend, the same movies are watched","each weekend, different movies are watched",A,surface,2
+368,Some stars are visible every night.,"each night, the same stars are visible","each night, different stars are visible",B,inverse,3
+369,Some songs touch every heart.,Different songs touch each heart.,The same songs touch every heart.,A,inverse,3
+370,Several elements contribute to every scientific discovery.,The same elements contribute to every scientific discovery.,Different elements contribute to each scientific discovery.,B,inverse,3
+371,Some events shape every decade.,Different events shape each decade.,The same events shape every decade.,A,inverse,3
+372,Several factors determine every election result.,Different factors determine each election result.,The same factors determine every election result.,A,inverse,3
+373,A few employees from each department attended the meeting.,Different employees from each department attended the meeting.,The same employees from every department attended the meeting.,A,inverse,3
+374,A few songs from each album became hits.,The same songs from every album became hits.,Different songs from each album became hits.,B,inverse,3
+375,Two of the scientists won every award.,Different scientists won different awards,The same two scientists won every award,B,surface,2
+376,Three of the actors appeared in each movie.,Each movie featured a different set of three actors,The same three actors appeared in each movie,B,surface,2
+377,Exactly one theory was accepted by all scientists.,Every scientist accepted the same theory,Not every scientist accepted the same theory,A,surface,2
+378,Two of the strategies were used in every game.,Not every game used the same two strategies,Every game used the same two strategies,B,surface,2
+379,Four teams played in all the tournaments.,The same four teams played in all the tournaments,Different four teams played in each tournament,A,surface,2
+380,One book was read by every member of the club.,Not every member read the same book,Every member read the same book,B,surface,2
+381,Three classrooms accommodate every student in the school.,There are more than three classrooms accommodating all students,There are exactly three classrooms accommodating all students,B,surface,2
+382,Four types of viruses are present in every hospital.,there are no four specific types of viruses found across all hospitals; each hospital simply has any four types,the same four types of viruses can be found across all hospitals,B,surface,2
+383,Two chefs will cook for all the guests.,a different pair of chefs will cook for each guest,the same two chefs will cook for all the guests,B,surface,2
+384,One of the engineers works on all five projects.,the same engineer does not work on all five projects,the same engineer works on all five projects,B,surface,2
+385,One of the songs was played by all radio stations.,every radio station played the same song,not every radio station played the same song,A,surface,2
+386,One of the scientists is involved in all four experiments.,the same scientist is not involved in all four experiments,the same scientist is involved in all four experiments,B,surface,2
+387,Seven of the chapters are included in all the textbooks.,every textbook includes the same set of seven chapters,not every textbook includes the same set of seven chapters,A,surface,2
+388,Five species of birds are found in each forest.,Each forest has the same five bird species,Each forest has a different set of five bird species,B,inverse,3
+389,Three exercises are included in all training programs.,Not every training program includes the same three exercises,Every training program includes the same three exercises,B,surface,2
+390,Three types of birds are seen in all forests across the country.,Each forest has the same three types of birds,Each forest has a different trio of bird types,A,surface,2
+391,One brand was chosen by all consumers in the survey.,Not every consumer chose the same brand,Every consumer chose the same brand,B,surface,2
+392,Five species of fish are found in all oceans.,The same five species can be found across all oceans,There are no five specific species found across all oceans; each ocean simply has any five kinds,A,surface,2
+393,One method was used by all researchers in the study.,Every researcher used the same method,Not every researcher used the same method,A,surface,2
+394,Three types of trees are found in every forest.,each forest has a different three types of trees,the same three types of trees are found in every forest,B,surface,2
+395,Three types of flowers grow in all gardens in the city.,Each garden grows a different set of three types of flowers,Each garden grows the same three types of flowers,B,surface,2
+396,One theory was taught in all philosophy classes.,Every philosophy class taught the same theory,Not every philosophy class taught the same theory,A,surface,2
+397,"Each painting was created by exactly one of the following artists - Monet, Picasso, Van Gogh.",not all paintings were created by the same artist,all paintings were created by the same artist,A,surface,1
+398,Each room is cleaned by exactly one janitor.,there is exactly one janitor in total cleaning the rooms,there is more than one janitor in total cleaning the rooms,A,inverse,4
+399,"Each assignment is graded by exactly one teacher, marked within the day it is submitted and before the next assignment is checked.",every assignment is graded by the same teacher,not every assignment is graded by the same teacher,A,inverse,4
+400,"Each song was composed by exactly one of the following musicians - Beethoven, Mozart, Chopin.",all songs were composed by the same musician,not all songs were composed by the same musician,B,surface,1
+401,Each player throws exactly one dart.,not all players throw the same dart,all players throw the same dart,A,surface,1
+402,Each artist paints exactly one painting.,all artists paint the same painting,not all artists paint the same painting,B,surface,1
+403,Each scientist conducts exactly one experiment.,not all scientists conduct the same experiment,all scientists conduct the same experiment,A,surface,1
+404,Each runner completes exactly one lap.,not all runners complete the same lap,all runners complete the same lap,B,inverse,4
+405,"On each day of the week, exactly one meal is served in the cafeteria.",more than one meal is served in the cafeteria over the course of the week,only one meal is served in the cafeteria for the entire week,A,surface,1
+406,"Each of the five friends - Alice, Bob, Charlie, David, and Eve - owns exactly one type of pet.",all friends own the same type of pet,not all friends own the same type of pet,B,surface,1
+407,Each of the ten students in the class solves exactly two math problems.,not all students solve the same two math problems,all students solve the same two math problems,A,surface,1
+408,Each of the nine runners in the race completes exactly one lap.,not all runners complete the same lap,all runners complete the same lap,B,inverse,4
+409,"Each of the five chefs - Adams, Baker, Clark, Davis, and Evans - prepares exactly one of two dishes: pasta or steak.","some chefs prepare pasta, and some chefs prepare steak","either all chefs prepare pasta, or all chefs prepare steak",A,surface,1
+410,"Each of the four artists - Foster, Green, Harris, and Ingle - paints exactly one of three landscapes: mountain, beach, or forest.","some artists paint one landscape, and some artists paint another","either all artists paint the same landscape, or all artists paint different landscapes",A,surface,1
+411,"Each of the six athletes - Underwood, Vega, Walker, Xiong, Young, and Ziegler - competes in exactly one of three sports: swimming, cycling, or running.","either all athletes compete in swimming, all compete in cycling, or all compete in running","some athletes compete in swimming, some in cycling, and some in running",B,surface,1
+412,"Each of the six programmers - Nelson, O'Brien, Parker, Quinn, Roberts, and Smith - codes exactly one of two languages: Python or Java.","some programmers code in Python, and some programmers code in Java","either all programmers code in Python, or all programmers code in Java",A,surface,1
+413,Each dog gets exactly one bone.,there is more than one bone in total,there is exactly one bone in total,A,surface,1
+414,"Each employee gets exactly one of the following benefits: health, dental, or vision.",not all employees get the same benefit,all employees get the same benefit,A,surface,1
+415,"Each of the four houses on the block is painted exactly one color: red, blue, green, or yellow.",all houses are painted the same color,not all houses are painted the same color,B,surface,1
+416,"Each of the three siblings - John, Jane, and Jim - has exactly two children.",not all siblings have the exact same two children,all siblings have the exact same two children,A,surface,1
+417,"Each chef uses exactly one type of oil: olive, coconut, or sunflower.",All chefs use the exact same type of oil,Not all chefs use the same type of oil,B,surface,1
+418,Each tree produces exactly four types of fruits.,Not all trees produce the exact same four types of fruits,All trees produce the exact same four types of fruits,B,inverse,4
+419,Each week exactly one of the employees is on vacation.,all weeks involve the same employee on vacation,not all weeks involve the same employee on vacation,B,surface,1
+420,Each day one of the tasks is completed.,there is exactly one task in total,there is more than one task in total,B,surface,1
+421,Each member contributes exactly one idea for the project.,all members contribute the same idea,not all members contribute the same idea,B,surface,1
+422,All the books are owned by exactly one person.,"in total, there is exactly one owner of the books","in total, there is more than one owner of the books",A,inverse,4
+423,All the ingredients are contained in exactly one dish.,there is more than one dish in total,there is exactly one dish in total,B,inverse,4
+424,All the books are part of a collection.,all the books belong to the same collection,not all the books belong to the same collection,A,inverse,4
+425,All the tools are sourced from one workshop.,all the tools are sourced from the same workshop,not all the tools are sourced from the same workshop,A,inverse,4
+426,The girl put every apple into exactly one basket.,not all of the apples go into the same basket,all of the apples go into the same basket,B,inverse,4
+427,The professor applied every method in one experiment.,not all the methods were applied in the same experiment,all the methods were applied in the same experiment,B,inverse,4
+428,All songs are part of an album.,not all the songs belong to the same album,all the songs belong to the same album,B,inverse,4
+429,The librarian sorted all the files into one collection.,not all the files were sorted into the same collection,all the files were sorted into the same collection,B,inverse,4
+430,Each cup was chosen from one cabinet.,not all the cups were chosen from the same cabinet,all the cups were chosen from the same cabinet,B,inverse,4
+431,The researcher conducted every experiment in exactly two labs.,all the experiments were conducted in the same two labs,not all the experiments were conducted in the same two labs,A,inverse,4
+432,The traveler packed every item into exaclty one suitcase.,not all of the items are packed into the same suitcase,all of the items are packed into the same suitcase,B,inverse,4
+433,All the tools are part of one set.,there is exactly one set in total,there is more than one set in total,A,inverse,4
+434,All the documents come from one archive.,not all the documents come from the same archive,all the documents come from the same archive,B,inverse,4
+435,All the paintings belong to one collection.,all the paintings belong to the same collection,not all the paintings belong to the same collection,A,inverse,4
+436,Every sentence was extracted from one file.,all the sentences were extracted from the same file,not all the sentences were extracted from the same file,A,inverse,4
+437,The chef placed each ingredient into exactly one bowl.,all of the ingredients go into the same bowl,not all of the ingredients go into the same bowl,A,inverse,4
+438,Each flower was picked from one garden.,all the flowers were picked from the same garden,not all the flowers were picked from the same garden,A,inverse,4
+439,The designer created each piece for one collection.,all the pieces were created for the same collection,not all the pieces were created for the same collection,A,inverse,4
+440,The writer wrote every chapter for one book.,not all the chapters were written for the same book,all the chapters were written for the same book,B,inverse,4

@@ -1,0 +1,14 @@
+# Keep repository text files consistent across Windows/Linux/macOS.
+* text=auto
+
+# Executable and source files should use LF line endings.
+*.sh text eol=lf
+*.py text eol=lf
+
+# Documentation/config/data text files also use LF for stable diffs.
+*.md text eol=lf
+*.cff text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf

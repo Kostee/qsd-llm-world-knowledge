@@ -1,175 +1,342 @@
 # Disentangling Form and World Knowledge in LLM Interpretation
+
 **Evidence from Quantifier Scope Disambiguation (QSD)**
 
-This repository contains code to reproduce experiments for the paper:
-*Disentangling Form and World Knowledge in LLM Interpretation: Evidence from Quantifier Scope Disambiguation* (ACL 2026 submission).
+This repository contains the code and public evaluation data associated with:
+
+> **Disentangling Form and World Knowledge in LLM Interpretation: Evidence from Quantifier Scope Disambiguation**
+
+The current repository state corresponds to the revised 2026 submission and its reproducibility artifact.
 
 ## Authors
+
 Jakub Kosterna, Justyna Grudzińska-Zawadowska, Maciej Miecznikowski, Wojciech Borysewicz, Julia Poteralska, Kacper Rutkowski, Jan Kwapisz
 
-## What’s inside
-We compare model behavior on QSD under different knowledge conditions:
+## Overview
 
-- **LLM zero-shot (baseline)**: no external context
-- **LLM zero-shot + RAG**: dynamic world-knowledge context retrieved from a local FAISS index
-  built over **ConceptNet + Simple Wikipedia** passages
-- **PLM baselines** (fine-tuned): RoBERTa / ERNIE 2.0 (from prior experiments; reused as reference points)
+We use Quantifier Scope Disambiguation (QSD) as a controlled probe of how large language models combine formal interpretive cues with lexical-semantic and world knowledge.
+
+The final LLM experiments evaluate seven models:
+
+- GPT-5.1
+- GPT-4o
+- GPT-4o-mini
+- Qwen-Max
+- Qwen3-8B
+- Llama 3.1 70B
+- Llama 3.1 8B
+
+The repository contains three main reproducibility entry points:
+
+1. balanced QSD, no RAG;
+2. final pseudosentences, no RAG;
+3. balanced QSD with RAG.
+
+## Main datasets
+
+### Balanced QSD benchmark
+
+`data/public/balanced_qsd_440.csv`
+
+- 440 evaluation items;
+- 110 items per quantifier-combination class;
+- 220 surface-scope targets;
+- 220 inverse-scope targets;
+- historical LLM runs used these 440 rows directly.
+
+The preserved historical balanced result folders contain 440 evaluation rows, with 222 gold A labels and 218 gold B labels. They do **not** contain a second A/B-reversed row for every item.
+
+### Final pseudosentence benchmark
+
+`data/public/pseudosentences_emnlp2026.csv`
+
+- 160 canonical source items;
+- 40 items per quantifier-combination class;
+- 80 surface-scope targets;
+- 80 inverse-scope targets.
+
+For the final pseudosentence model evaluation, each source item is represented in two answer-order variants: original and A/B-flipped. The deterministic preprocessing step therefore creates 320 evaluation rows.
+
+Generate the model-ready file with:
+
+```bash
+python scripts/prepare_pseudo_paper_final.py
+```
+
+This writes:
+
+```text
+data/generated/pseudo_paper_final_model_ready.csv
+data/generated/pseudo_paper_final_prompt_only.csv
+```
+
+The generated 320-row files were verified against the historical files used for the final pseudosentence runs.
+
+For dataset details, see [`data/README.md`](data/README.md).
+
+## Important reproducibility note
+
+The preserved historical outputs reveal two implementation details that are important for exact reproduction:
+
+- balanced no-RAG and balanced RAG runs used the 440-row canonical balanced evaluation file;
+- final pseudosentence runs used 160 base items expanded to 320 A/B-order evaluation rows.
+
+The manuscript describes A/B-order duplication more generally across conditions. The repository follows the **historical execution that produced the reported results**. See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for the audit trail and scoring details.
+
+## Scoring protocol
+
+For every evaluation row, `src/llm_zero_shot.py` makes five model calls by default (`--repeats 5`).
+
+The result file stores:
+
+```text
+pred_run_1
+pred_run_2
+pred_run_3
+pred_run_4
+pred_run_5
+prediction
+correct
+```
+
+`prediction` is the majority vote across the five calls. The standard `metrics.json` point estimate is computed from this majority-vote prediction.
+
+To inspect both the majority-vote point estimate and variability across the five repeat-level accuracies, run:
+
+```bash
+python scripts/summarize_paper_results.py
+```
+
+The script writes:
+
+```text
+results/paper_metrics_summary.csv
+```
+
+and reports, separately:
+
+- majority-vote accuracy;
+- mean accuracy across the five repeat columns;
+- sample SD across the five repeat columns;
+- surface/inverse breakdowns;
+- combination-specific breakdowns.
+
+This separation is intentional: it makes the historical scoring convention explicit rather than conflating the majority-vote point estimate with the mean across repeats.
+
+## Quantifier-combination classes
+
+| Type | Pattern | Preferred reading |
+|---|---|---|
+| I | U-E | surface |
+| II | E-U | surface |
+| III | E-U | inverse |
+| IV | U-E | inverse |
 
 ## Setup
+
+Python 3.12 is the tested artifact environment.
+
+Create and activate a virtual environment:
+
 ```bash
 python -m venv .venv
-# Windows: .venv\Scripts\activate
-# Linux/macOS: source .venv/bin/activate
-pip install -r requirements.txt
-# Create a local .env (see .env.example) with API keys.
 ```
+
+Windows:
+
+```powershell
+.venv\Scripts\activate
+```
+
+Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+Install the artifact dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a local `.env` file from `.env.example`.
 
 ## API keys
 
-Create a local `.env` file in the repository root (see `.env.example`).
-Depending on the models you run, you may need:
+The final seven-model paper sweep uses:
 
-- OpenAI: `OPENAI_API_KEY`
-- Qwen (DashScope): `DASHSCOPE_API_KEY` (and optional base URL if you override it)
-- Gemini: `GEMINI_API_KEY`
-- OpenRouter (e.g., Llama): `OPENROUTER_API_KEY`
+```text
+OPENAI_API_KEY
+QWEN_API_KEY
+OPENROUTER_API_KEY
+```
 
-Note: `.env` is not tracked by git.
+The unified runner also supports Gemini through:
 
-## Data
+```text
+GOOGLE_API_KEY
+```
 
-Full datasets are kept locally under `data/private/` (not tracked by git).
-Small preview files are provided in `data/public/`.
+Gemini is not required for the final seven-model sweep and its LangChain integration is therefore not part of the pinned core artifact environment.
 
-Expected full files (local):
+The `.env` file is ignored by Git.
 
-- `data/private/MM_balanced_dataset.csv` – full balanced dataset (paired format).
-- `data/private/dataset_for_llms.csv` – final balanced evaluation set (single instance per pair; contains comb).
-- `data/private/WB_survey_expB2_ABexpanded.csv` – constructed ("invented") dataset (paired format; contains comb).
-- `data/private/invented_for_llms.csv` – final invented evaluation set (single instance per pair; contains comb).
-- `data/private/folds_indices.csv` – indices used for earlier PLM cross-validation runs.
+## Reproducing the final LLM experiments
 
-Preview files (tracked):
-- `data/public/*.preview.csv`
+### Balanced QSD — no RAG
 
-For details, see `data/README.md`.
+Single-model example:
 
-## RAG: build the retrieval corpus + FAISS index (once)
+```bash
+python src/llm_zero_shot.py \
+  --dataset balanced \
+  --limit all \
+  --model gpt-4o \
+  --repeats 5 \
+  --seed 42
+```
 
-RAG runs reuse artifacts produced by `src/build_rag_advanced.py`.
-This step builds a passage corpus (ConceptNet + Simple Wikipedia), cleans & chunks it, deduplicates,
-embeds passages (SentenceTransformers), and creates a FAISS index.
+Final seven-model sweep:
+
+```bash
+bash scripts/run_all_full_no_rag_balanced_paper_final.sh
+```
+
+The `balanced` selector resolves to:
+
+```text
+data/public/balanced_qsd_440.csv
+```
+
+### Final pseudosentences — no RAG
+
+Prepare the final evaluation data:
+
+```bash
+python scripts/prepare_pseudo_paper_final.py
+```
+
+or use the batch runner, which performs preparation automatically:
+
+```bash
+bash scripts/run_all_full_no_rag_pseudo_paper_final.sh
+```
+
+### Balanced QSD — RAG
+
+Build the ConceptNet + Simple Wikipedia retrieval corpus and FAISS index:
 
 ```bash
 python src/build_rag_advanced.py --output-dir data/private/rag_corpus
 ```
 
-Artifacts written to `--output-dir` include (by default):
-- `wiki_passages.txt` - text passages
-- `wiki_passages.pkl` - list of passages (List[str])
-- `wiki_passages.faiss` - FAISS index over normalized embeddings
+The current LLM retrieval defaults are:
 
-You can control runtime retrieval via env vars:
-- `RAG_DIR` (default: `data/private/rag_corpus`)
-- `RAG_PASSAGES_BASENAME` (default: `wiki_passages`)
-- `RAG_EMBEDDING_MODEL` (must match index build)
-- `RAG_TOP_K` (default: 3)
-- `RAG_MAX_CONTEXT_CHARS`, `RAG_MAX_PASSAGE_CHARS`
-
-## Running experiments
-
-1) (Optional) Build the invented evaluation set (once)
-
-If you need to regenerate `invented_for_llms.csv` from the paired invented dataset:
-
-Generate the constructed one-per-pair dataset (once)
-```
-python scripts/make_constructed_for_llms.py ^
-  --input data/private/WB_survey_expB2_ABexpanded.csv ^
-  --output data/private/constructed_for_llms.csv ^
-  --seed 42 ^
-  --strict
+```text
+RAG_EMBEDDING_MODEL=sentence-transformers/multi-qa-mpnet-base-dot-v1
+RAG_TOP_K=3
+RAG_MAX_CONTEXT_CHARS=1200
+RAG_MAX_PASSAGE_CHARS=400
 ```
 
-2) Run the unified LLM zero-shot pipeline (single run)
+Single-model example:
 
-No-RAG
 ```bash
-python src/llm_zero_shot.py --dataset balanced --limit 5 --model gpt-4o --repeats 5 --seed 42
-python src/llm_zero_shot.py --dataset invented --limit all --model qwen:qwen3-8b --repeats 5 --seed 42
+python src/llm_zero_shot.py \
+  --dataset balanced \
+  --limit all \
+  --rag \
+  --model gpt-4o \
+  --repeats 5 \
+  --seed 42
 ```
 
-With RAG
+Final seven-model sweep:
+
 ```bash
-python src/llm_zero_shot.py --dataset balanced --limit all --rag --model gpt-4o --repeats 5 --seed 42
+bash scripts/run_all_full_rag_paper_final.sh
 ```
 
-Where:
-- `--dataset` is `balanced` or `invented`
-- `--limit` is `0`, `5`, or `all`
-- `--model` supports:
-  - OpenAI: `gpt-4o`, `gpt-4-0613`, `o3-mini`...
-  - Qwen: `qwen:<model>` (DashScope OpenAI-compatible endpoint)
-  - Gemini: `gemini:<model>`
-  - OpenRouter: `openrouter:<model>`
- 
-3) Run batch scripts (Git Bash / Linux / macOS)
+## Smoke tests
+
+`--limit 0` is a plumbing test only. It makes no API calls and fills predictions with Option A, so its accuracy is **not** a model result.
+
+Example:
+
+```bash
+python src/llm_zero_shot.py --dataset balanced --limit 0 --model gpt-4o --repeats 5 --seed 42
 ```
-bash scripts/run_dry0_no_rag.sh
-bash scripts/run_sanity5_no_rag.sh
-bash scripts/run_all_full_no_rag.sh
-bash scripts/run_all_full_rag.sh
-```
+
+Use `--limit 5` for a small real-API sanity run and `--limit all` for the full experiment.
 
 ## Outputs
 
-LLM runs are saved under `results/` (not tracked by git). Each run directory contains:
-- `predictions.csv` - per-item predictions (per repeat) + fields needed for aggregation
-- `metrics.json` and `metrics.csv` (accuracy + breakdowns)
-- `config.json` - the exact run configuration
+LLM runs are written under:
 
-PLM experiments are saved under `runs/` (also not tracked by git). We log:
-* `predictions.csv`
-* aggregate accuracies (overall, surface vs inverse, per condition)
+```text
+results/
+```
 
-## Post-processing & utilities (scripts/)
+This directory is ignored by Git.
 
-- `scripts/summarize_results.py`
-Aggregates all run folders under results/ into results/metrics_summary.csv.
+A run directory contains:
 
-- `scripts/backfill_invented_comb_and_metrics.py` (one-off migration)
-Backfills missing comb into:
+```text
+predictions.csv
+metrics.json
+metrics.csv
+config.json
+```
 
-	- `data/private/invented_for_llms.csv` (if needed),
+For paper-oriented aggregation, prefer:
 
-	- `results/invented*/predictions.csv`, and recomputes `metrics.json` / `metrics.csv` so invented runs have per-combination metrics
-consistent with balanced runs.
+```bash
+python scripts/summarize_paper_results.py
+```
 
-- `scripts/run_dry0_no_rag.sh`
-Quick smoke test (no real API calls; --limit 0).
+The older `scripts/summarize_results.py` is retained for historical compatibility.
 
-- `scripts/run_sanity5_no_rag.sh`
-Small sanity run (`--limit 5`) for a subset of models/datasets.
+## Repository structure
 
-- `scripts/run_all_full_no_rag.sh`
-Full no-RAG sweep across configured models and datasets.
+```text
+.
+├── data/
+│   ├── public/
+│   │   ├── balanced_qsd_440.csv
+│   │   ├── pseudosentences_emnlp2026.csv
+│   │   └── *.preview.csv
+│   ├── generated/              # deterministic, ignored
+│   └── private/                # local-only historical/RAG resources, ignored
+├── scripts/
+│   ├── prepare_pseudo_paper_final.py
+│   ├── summarize_paper_results.py
+│   ├── run_all_full_no_rag_balanced_paper_final.sh
+│   ├── run_all_full_no_rag_pseudo_paper_final.sh
+│   ├── run_all_full_rag_paper_final.sh
+│   └── ...
+├── src/
+│   ├── llm_zero_shot.py
+│   ├── build_rag_advanced.py
+│   └── plm/
+├── REPRODUCIBILITY.md
+├── README.md
+├── requirements.txt
+└── CITATION.cff
+```
 
-- `scripts/run_all_full_rag.sh`
-Full RAG sweep across configured models (typically used for balanced).
+## Legacy and auxiliary code
 
-- `scripts/make_constructed_for_llms.py`
-Creates the invented evaluation set (single instance per pair) from the paired invented dataset.
+The repository retains utilities from earlier project stages, including earlier constructed/invented datasets, rebuttal/statistical scripts, older batch scripts, and fine-tuned PLM baselines.
 
-- `scripts/select_random_from_pairs.py`
-Helper for selecting one item from paired data (used in dataset preparation utilities).
+They are kept for provenance but are not the primary entry points for the final seven-model LLM experiments.
 
-- `scripts/generate_indices_for_cross.py`
-Generates indices for cross-validation / split utilities (legacy support for earlier PLM experiments).
+## License and source data
 
-## License
+Repository code is covered by [`LICENSE`](LICENSE).
 
-See `LICENSE`.
+The balanced benchmark is derived in part from the scope-ambiguity resources introduced by Kamath et al. (2024). Please preserve source attribution when redistributing or adapting the data.
 
 ## Citation
 
-If you use this code, please cite the paper (see `CITATION.cff`).
+If you use this repository, please cite the associated paper. Citation metadata is provided in [`CITATION.cff`](CITATION.cff).

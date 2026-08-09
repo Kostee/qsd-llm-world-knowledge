@@ -1,0 +1,22 @@
+# Tested artifact environment (Python 3.12.6)
+# Core LLM evaluation + RAG dependencies.
+pandas==2.3.3
+numpy==2.3.4
+python-dotenv==1.2.1
+tenacity==9.1.2
+langchain-core==1.2.3
+langchain-openai==1.1.6
+faiss-cpu==1.13.1
+sentence-transformers==5.2.0
+datasets==4.4.2
+datasketch==1.8.0
+rapidfuzz==3.14.3
+tqdm==4.67.1
+PyYAML==6.0.3
+torch==2.9.0
+
+# Optional Gemini support in src/llm_zero_shot.py additionally requires:
+#   langchain-google-genai
+#
+# Legacy PLM scripts may require additional packages and are not part of
+# the pinned final LLM/RAG artifact environment above.

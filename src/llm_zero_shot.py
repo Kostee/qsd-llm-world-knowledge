@@ -9,7 +9,7 @@ Supports multiple providers via LangChain:
 - Gemini:       "gemini:<model>"
 
 Key features:
-- Dataset selection: balanced / invented (CSV in data/private/)
+- Dataset selection: public balanced benchmark / legacy invented dataset / custom CSV path
 - Example limit modes: 0 (no API calls), 5, all
 - Majority vote over N repeats (default 5); tie -> random
 - Writes per-run outputs under results/<run_id>/
@@ -209,8 +209,12 @@ def format_rag_context(passages: List[str], cfg: RagConfig) -> str:
 
 REPO_ROOT = Path(__file__).resolve().parents[1]  # .../qsd-llm-world-knowledge
 DEFAULT_DATA_PRIVATE = REPO_ROOT / "data" / "private"
+DEFAULT_DATA_PUBLIC = REPO_ROOT / "data" / "public"
 
-DEFAULT_BALANCED = DEFAULT_DATA_PRIVATE / "dataset_for_llms.csv"
+# Final public benchmark used for the paper experiments.
+DEFAULT_BALANCED = DEFAULT_DATA_PUBLIC / "balanced_qsd_440.csv"
+
+# Legacy constructed/invented condition retained for historical runs.
 DEFAULT_INVENTED = DEFAULT_DATA_PRIVATE / "invented_for_llms.csv"
 
 DEFAULT_RESULTS_DIR = REPO_ROOT / "results"
@@ -501,7 +505,7 @@ def write_metrics(metrics: Dict[str, Any], out_dir: Path) -> None:
 
 def resolve_dataset(dataset_arg: str) -> Tuple[Path, str]:
     """
-    Map dataset flag to actual file in data/private/.
+    Map a dataset selector to the corresponding repository file.
     """
     dataset_arg = dataset_arg.lower().strip()
     if dataset_arg in ("balanced", "dataset_for_llms"):

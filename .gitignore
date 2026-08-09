@@ -129,3 +129,5 @@ Thumbs.db
 
 App
 python3
+# Reproducible generated evaluation datasets
+data/generated/
