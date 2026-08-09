@@ -1,0 +1,161 @@
+source_idx,sentence,Option A,Option B,gold_ans,gold_scope_label,comb
+1,Each feln lavs a nolm.,there is more than one nolm in total,there is exactly one nolm in total,A,surface,1
+2,Each zegitoor lavs a fuha.,there is more than one fuha in total,there is exactly one fuha in total,A,surface,1
+3,Each bluk lavs a zoriniri.,there is more than one zoriniri in total,there is exactly one zoriniri in total,A,surface,1
+4,Each norb gloms exactly five pimebaors.,there are more than five pimebaors in total,there are exactly five pimebaors in total,A,surface,1
+5,Each dug lavs exactly one vodepoor.,there is more than one vodepoor in total,there is exactly one vodepoor in total,A,surface,1
+6,Each drim finikeals pu a nask.,there is more than one nask in total,there is exactly one nask in total,A,surface,1
+7,Each nimen brims one bifisior.,there is more than bifisior in total,there is exactly one bifisior in total,A,surface,1
+8,Each nimen lavs a nunu.,there is more than one nunu in total,there is exactly one nunu in total,A,surface,1
+9,Each nimen lavs a ramira.,there is more than one ramira in total,there is exactly one ramira in total,A,surface,1
+10,Each geteri komis a viven.,there is more than one viven in total,there is exactly one viven in total,A,surface,1
+11,Each talf lavs a mosageor.,there is more than one mosageor in total,there is exactly one mosageor in total,A,surface,1
+12,Each javen vrimed a ririzeor.,there is more than one ririzeor in total,there is exactly one ririzeor in total,A,surface,1
+13,Each ulf romaroed exactly two nasks.,there are more than two nasks in total ,there are exactly two nasks in total ,A,surface,1
+14,Each luhahado lavs a danu.,there is more than one danu in total,there is exactly one danu in total,A,surface,1
+15,Each luhahado kozomas a nilikoli.,there is more than one nilikoli in total,there is exactly one nilikoli in total,A,surface,1
+16,Each luhahado lavs a mosageor.,there is more than one mosageor in total,there is exactly one mosageor in total,A,surface,1
+17,Each luhahado plins a poli.,there are more than one poli in total,there is exactly one poli in total,A,surface,1
+18,Each sarigeko limadofus exactly one madage.,there is more than one madage in total,there is exactly one madage in total,A,surface,1
+19,Each renf vrimed a kulidaor.,there is more than one kulidaor in total,there is exactly one kulidaor in total,A,surface,1
+20,Each renf vrims exactly two devimoors.,there are more than two devimoors in total,there are exactly two devimoors in total,A,surface,1
+21,Each raf glars exactly one tunaduor.,there is more than one tunaduor in total,there is exactly one tunaduor in total,A,surface,1
+22,Each ral lavs a mafabior.,there is more than one mafabior in total,there is exactly one mafabior in total,A,surface,1
+23,Each mav lulucalus a sarp.,there is more than one sarp in total,there is exactly one sarp in total,A,surface,1
+24,Each zorp plins na a ston.,there is more than one ston in total,there is exactly one ston in total,A,surface,1
+25,Every bluker sprokes a zegitoor fos.,there is more than one zegitoor fos in total,there is exactly one zegitoor fos in total,A,surface,1
+26,Every fenuvaor lavs a copavuor.,there is more than one copavuor in total,there is exactly one copavuor in total,A,surface,1
+27,Every dask davs exactly one megeceor.,there is more than one megeceor in total,there is exactly one megeceor in total,A,surface,1
+28,Every riricanu lavs exactly two nilis.,there are more than two nilis in total,there are exactly two nilis in total,A,surface,1
+29,Every parn lavs a durupior.,there is more than one durupior in total,there is exactly one durupior in total,A,surface,1
+30,Every misanusa lavs a zodatete.,there is more than one zodatete in total,there is exactly one zodatete in total,A,surface,1
+31,Every tav lavs a klop.,there is more than one klop in total,there is exactly only one klop in total,A,surface,1
+32,Every talf lavs exactly one fuma.,there is more than one fuma in total,there is exactly one fuma in total,A,surface,1
+33,Every olf lavs a crom.,there is more than one crom in total,there is exactly one crom in total,A,surface,1
+34,Every merd lavs exactly three nacisuors.,"in total, there are more than three nacisuors","in total, there are exactly three nacisuors",A,surface,1
+35,Every lusk lavs a fivubior.,there is more than one fivubior in total,there is exactly one fivubior in total,A,surface,1
+36,Every nuterate lavs a zodatete.,there is more than one zodatete in total,there is exactly one zodatete in total,A,surface,1
+37,Every ral lavs exactly two lulites.,"in total, there are more than two lulites","in total, there are exactly two lulites",A,surface,1
+38,Every mav fapubas a zikekoor.,there is more than one zikekoor in total,there is exactly one zikekoor in total,A,surface,1
+39,Every mav vrims exactly two dafudaors.,"in total, there are more than two dafudaors","in total, there are exactly two dafudaors",A,surface,1
+40,Each casanus lavs a rara.,there is more than one rara in total,there is one rara in total,A,surface,1
+41,A fudate sanus all the rimiko.,there is exactly one fudate in total,there is more than one fudate in total,A,surface,2
+42,A drim koks every nask na the glim.,there is exactly one drim in total,there is more than one drim in total,A,surface,2
+43,A trove trens every dask.,there is exactly one trove in total,there is more than one trove in total,A,surface,2
+44,A gofacior mirofes all the dugelaors.,there is exactly one gofacior in total,there is more than one gofacior in total,A,surface,2
+45,A saln masodus all the paxens.,there is exactly one saln in total,there is more than one saln in total,A,surface,2
+46,A nudave numalutes every mica.,there is exactly one nudave in total,there is more than one nudave in total,A,surface,2
+47,A hama nizopos all the nucaris.,there is exactly one hama in total,there is more than one hama in total,A,surface,2
+48,A posa ranus every ral.,there is exactly one posa in total,there is more than one posa in total,A,surface,2
+49,A nosikoor bevelos every bluk.,there is exactly one nosikoor in total,there is more than one nosikoor in total,A,surface,2
+50,A camakaor mecanis every sarp.,there is exactly one camakaor in total,there is more than one camakaor in total,A,surface,2
+51,A dohanaor atems li all the paxens.,there is exactly one dohanaor in total,there is more than one dohanaor in total,A,surface,2
+52,A nivureor zesihus every rakovaor.,there is exactly one nivureor in total,there is more than one nivureor in total,A,surface,2
+53,A vusicior veshs every dumeneor.,there is exactly one vusicior in total,there is more than one vusicior in total,A,surface,2
+54,A likoveli kolus all the plads.,there is exactly one likoveli in total,there is more than one likoveli in total,A,surface,2
+55,A tevor fuperos every zikekoor.,there is exactly one tevor in total,there is more than one tevor in total,A,surface,2
+56,A tevor rakikis every mav na the klar.,there is exactly one tevor in total,there is more than one tevor in total,A,surface,2
+57,A lutehada teradoves all the fenuvaors.,there is exactly one lutehada in total,there is more than one lutehada in total,A,surface,2
+58,A bluker lumiraras all the lokens.,there is exactly one bluker in total,there is more than one bluker in total,A,surface,2
+59,Five bluks funisafued li every mav.,there are exactly five bluks in total,there are more than five bluks in total,A,surface,2
+60,Five nasks romaroed ko all peqs.,there are exactly five nasks in total ,there are more than five nasks in total ,A,surface,2
+61,Five bekiheors nibahued ko all the peqs.,there are exactly five bekiheors in total ,there are more than five bekiheors in total ,A,surface,2
+62,One feln gelecaed na all the velts.,there is exactly one feln in total,there is more than one feln in total,A,surface,2
+63,One zegitoor rited all the hehiviors.,there is exactly one zegitoor in total,there is more than one zegitoor in total,A,surface,2
+64,One bluk pozoed sa every luhahado.,there is exactly one bluk in total,there is more than one bluk in total,A,surface,2
+65,One lumazo radalunued sa all linis.,there is exactly one lumazo in total,there is more than one lumazo in total,A,surface,2
+66,One camakaor mecanis every dem.,there is exactly one camakaor in total,there is more than one camakaor in total,A,surface,2
+67,One gepo sproked sa all zonus.,there is exactly one gepo in total,there is more than one gepo in total,A,surface,2
+68,One podolima nupodaried all the dadanus.,there is exactly one podolima in total,there is more than one podolima in total,A,surface,2
+69,One nipo safusanied sa all zorps.,there is exactly one nipo in total,there is more than one nipo in total,A,surface,2
+70,Some parns minivemaed na any riniko.,the same parns minivemaed na every riniko,different parns minivemaed na different rinikos,A,surface,2
+71,Three drims soped every nask.,there are exactly three drims in total,there are more than three drims in total,A,surface,2
+72,Three nasks romaroed ko all the peqs.,there are exactly three nasks in total,there are more than three nasks in total,A,surface,2
+73,Three jelns zepateed every jast.,there are exactly three jelns in total,there are more than three jelns in total,A,surface,2
+74,Three dalus rinuveged na each nurimiri.,there are exactly three dalus in total,there are more than three dalus in total,A,surface,2
+75,Three bekiheors beveloed every peq.,there are exactly three bekiheors in total,there are more than three bekiheors in total,A,surface,2
+76,Two dohasaors finikealed pu every pofefaor.,there are exactly two dohasaors in total,there are more than two dohasaors in total,A,surface,2
+77,Two dohasaors fadodaed all the sarps.,there are exactly two dohasaors in total,there are more than two dohasaors in total,A,surface,2
+78,Two makaors sanied every sem.,there are exactly two makaors in total,there are more than two makaors in total,A,surface,2
+79,Two dugelaors plined every gesa.,there are exactly two dugelaors in total,there are more than two dugelaors in total,A,surface,2
+80,Two nivureors zesihued every peq.,there are exactly two nivureors in total,there are more than two nivureors in total,A,surface,2
+81,A bluk bived li each mav.,there is more than one bluk in total,there is exactly one bluk in total,A,inverse,3
+82,A nask romaroed every len.,there is more than one nask in total,there is exactly one nask in total,A,inverse,3
+83,A few talfs re each dem atemed the tedagenu.,different talfs re every dem atemed the tedagenu,the same talfs re every dem atemed the tedagenu,A,inverse,3
+84,A few vivens re every dorite kofued tenikos.,different vivens re every dorite kofued tenikos,the same vivens re every dorite kofued tenikos,A,inverse,3
+85,A mica fils na each sazo.,there is more than one mica in total,there is one mica in total,A,inverse,3
+86,A ririzeor bived li every talf.,there is more than one ririzeor in total,there is exactly one ririzeor in total,A,inverse,3
+87,A potete fils na all nilunis.,there is more than one potete in total,there is exactly one potete in total,A,inverse,3
+88,A bluk lihanued li each bicicaor.,there is more than one bluk in total,there is exactly one bluk in total,A,inverse,3
+89,A fupukeor fleased every mur.,there is more than one fupukeor in total,there is exactly one fupukeor in total,A,inverse,3
+90,A tirudeor vened every mur.,there is more than one tirudeor in total,there is exactly one tirudeor in total,A,inverse,3
+91,A bisucaor penazued every bicicaor.,there is more than one bisucaor in total,there is exactly one bicicaor in total,A,inverse,3
+92,A viven plined every hipemeor te the tufisoor.,there is more than one viven in total,there is exactly one viven in total,A,inverse,3
+93,A rucaveor pimebaed every mur na the gobuheor.,there is more than one rucaveor in total,there is exactly one rucaveor in total,A,inverse,3
+94,A lahozaor fivohoed li each fibokeor.,there is more than one lahozaor in total,there is exactly one lahozaor in total,A,inverse,3
+95,A peln bived li each nimen.,there is more than one peln in total,there is exactly one peln in total,A,inverse,3
+96,A fostal ranis na all misanusas.,there is more than one fostal in total,there is exactly one fostal in total,A,inverse,3
+97,A cepecaor profed li each renf.,there is more than one cepecaor in total,there is exactly one cepecaor in total,A,inverse,3
+98,Exactly five dados drined li every norb.,there are more than five dados in total,there are exactly five dados in total,A,inverse,3
+99,Exactly four duhofaors nopozeed na each norb.,there are more than four duhofaors in total,there are exactly four duhofaors in total,A,inverse,3
+100,Exactly one gefumi lidaharas te every fuve.,there is more than one gefumi in total,there is exactly one gefumi in total,A,inverse,3
+101,Exactly one olf varped na each seluroor.,there is more than one olf in total,there is exactly one olf in total,A,inverse,3
+102,Exactly three bluks bived li every renf.,there are more than three bluks in total,there are exactly three bluks in total,A,inverse,3
+103,Exactly three nives mimalinued li each sagemilu.,there are more than three nives in total,there are exactly three nives in total,A,inverse,3
+104,Exactly two fudofudas nopozeed every sovucoor.,there are more than two fudofudas in total,there are exactly than two fudofudas in total,A,inverse,3
+105,Exactly two ririzeors bived li very ulf.,there are more than two ririzeors in total,there are exactly two ririzeors in total,A,inverse,3
+106,Johnson lavs exactly one tedagenu mi each polipomi.,there is more than one tedagenu in total,there is exactly one tedagenu in total,A,inverse,3
+107,Several hakodoras sproked na every hanuma.,different hakodoras sproked na every hanuma,the same hakodoras sproked na every hanuma,A,inverse,3
+108,Some dofuzozos salicaed na any dofulute.,different dofuzozos are salicaed na every dofulute,the same dofuzozos are salicaed na every dofulute,A,inverse,3
+109,The feln glars exactly one kekobeor te each velataor.,there is more than one kekobeor in total,there is exactly one kekobeor in total,A,inverse,3
+110,The drim sops exactly three nasks pu every sovucoor.,there are more than three nasks in total,there are exactly three nasks in total,A,inverse,3
+111,The drim romaros exactly one potesari li each vete.,there is more than one potesari in total,there is exactly one potesari in total,A,inverse,3
+112,The molven profs at least one doluzo pu every talf.,there is more than one doluzo in total,there is exactly one doluzo in total,A,inverse,3
+113,The horobaor drins exactly one sarp li every mav.,there is more than one sarp in total,there is exactly one sarp in total,A,inverse,3
+114,The horobaor bivs exactly two hateris pu each madamite.,there are more than two hateris in total,there are exactly two hateris in total,A,inverse,3
+115,The camakaor lamepos exactly two hipemeors li every ruv.,there are more than two hipemeors in total,there are exactly two hipemeors in total,A,inverse,3
+116,The dugelaor plins exactly one viven pu each punobeor.,there is more than one viven in total,there is exactly one viven in total,A,inverse,3
+117,The lizo profs exactly one nute li every zori.,there is more than one nute in total,there is exactly one nute in total,A,inverse,3
+118,The tevor drins exactly one bluk li each mav.,there is more than one bluk in total,there is exactly one bluk in total,A,inverse,3
+119,There is a linudo na every zodoli.,there is more than one linudo in total,there is exactly one linudo in total,A,inverse,3
+120,There is one parn haponu each sami.,there is more than one parn in total,there is exactly one parn in total,A,inverse,3
+121,All hehiviors hudaraed na one guhusior.,there is exactly one guhusior in total,there is more than one guhusior in total,A,inverse,4
+122,All namasuors kocupied na one locisaor.,there is exactly one locisaor in total,there is more than one locisaor in total,A,inverse,4
+123,All fuceleors fadedued na one kokefaor.,there is exactly one kokefaor in total,there is more than one kokefaor in total,A,inverse,4
+124,All pomeloors fivohoed re one sadalior.,there is exactly one sadalior in total,there is more than one sadalior in total,A,inverse,4
+125,All talfs nuzoko na exactly one cazonite fuve.,there is exactly one cazonite fuve in total,there is more than one cazonite fuve in total,A,inverse,4
+126,All bucehaors cikuroed na one garasial.,there is exactly one garasial in total,there is more than one garasial in total,A,inverse,4
+127,All the nilicates horoloed mi one dacufoor.,there is exactly one dacufoor in total,there is more than one dacufoor in total,A,inverse,4
+128,All the hanumas rited na one zolupo.,there is exactly one zolupo in total,there is more than one zolupo in total,A,inverse,4
+129,All the vivens dihalaed na one rasaha.,there is exactly one rasaha in total,there is more than one rasaha in total,A,inverse,4
+130,All the vivens dihalaed na one nacisaor.,there is exactly one nacisaor in total,there is more than one nacisaor in total,A,inverse,4
+131,All the mavs fapubaed li one tevor.,there is exactly one tevor in total,there is more than one tevor in total,A,inverse,4
+132,Each nifu radalunued re one nuluri.,there is exactly one nuluri in total,there is more than one nuluri in total,A,inverse,4
+133,Each olf tehaed re one merd.,there is exactly one merd in total,there is more than one merd in total,A,inverse,4
+134,Each hozamoor horoloed mi one dacufoor.,there is exactly one dacufoor in total,there is more than one dacufoor in total,A,inverse,4
+135,Each peln ul cacozior mufunaed pu one sern.,there is exactly one sern in total,there is more than one sern in total,A,inverse,4
+136,Every torm sugeheed na one trask.,there is exactly one trask in total,there is more than one trask in total,A,inverse,4
+137,Every loken risalumied na one bluk.,there is exactly one bluk in total,there is more than one bluk in total,A,inverse,4
+138,Every loken rited sa one zegitoor.,there is exactly one zegitoor in total,there is more than one zegitoor in total,A,inverse,4
+139,Every loken rited na one himanoor.,there is exactly one himanoor in total,there is more than one himanoor in total,A,inverse,4
+140,Every funuzo risalumied re one vesami.,there is exactly one vesami in total,there is more than one vesami in total,A,inverse,4
+141,Every ramara camaged li one haminu.,there is exactly one haminu in total,there is more than one haminu in total,A,inverse,4
+142,Every luhahado nudotecas li one zorp.,there is exactly one zorp in total,there is more than one zorp in total,A,inverse,4
+143,The feln glared every lapehoor mi one baguheor.,there is exactly one baguheor in total,there is more than one baguheor in total,A,inverse,4
+144,The feln glared every dasebuor na exactly one nacisaor.,there is exactly one nacisaor in total,there is more than one nacisaor in total,A,inverse,4
+145,The dask trened every len na one nimi.,there is one nimi in total,there is more than one nimi in total,A,inverse,4
+146,The dask daved each megeceor pu one peq.,there is exactly one peq in total,there is more than one peq in total,A,inverse,4
+147,The drim koks every nask na exactly one tapovior.,there is exactly one tapovior in total,there is more than one tapovior in total,A,inverse,4
+148,The drim sproked every libadaor na exactly one nask.,there is exactly one nask in total,there is more than one nask in total,A,inverse,4
+149,The dohasaor pofefaed every vahubuor na one vesk.,there is exactly one vesk in total,there is more than one vesk in total,A,inverse,4
+150,The dohasaor pofefaed every vahubuor mi one dacufoor.,there is exactly one dacufoor in total,there is more than one dacufoor in total,A,inverse,4
+151,The dugelaor plined every sacagoor te one dafudaor.,there is exactly one dafudaor in total,there is more than one dafudaor in total,A,inverse,4
+152,The dugelaor plined every viven te one dafudaor.,there is exactly one dafudaor in total,there is more than one dafudaor in total,A,inverse,4
+153,The nivureor zesihued each rakovaor mi one dacufoor.,there is exactly one dacufoor in total,there is more than one dacufoor in total,A,inverse,4
+154,The mahafu salicaed every gepo na one dadanu.,there is exactly one dadanu in total,there is more than one dadanu in total,A,inverse,4
+155,The podolima nupodaried each hakozori na one numahara.,there is exactly one numahara in total,there is more than one numahara in total,A,inverse,4
+156,The podolima fadedued each malumiri na one koveni.,there is exactly one koveni in total,there is more than one koveni in total,A,inverse,4
+157,The fusazo fuhanied every niluca li exactly one nuve.,there is exactly one nuve in total,there is more than one nuve in total,A,inverse,4
+158,The bluker lumiraraed every loken na one himanoor.,there is exactly one himanoor in total,there is more than one himanoor in total,A,inverse,4
+159,The bluker rited each loken na one himanoor.,all lokens were rited na the same himanoor,not all lokens were rited na the same himanoor,A,inverse,4
+160,The bluker rited every loken pu one bluk.,all lokens were rited pu the same bluk,not all lokens were rited pu the same bluk,A,inverse,4

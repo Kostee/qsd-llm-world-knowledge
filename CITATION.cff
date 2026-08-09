@@ -1,15 +1,16 @@
 cff-version: 1.2.0
 title: "Disentangling Form and World Knowledge in LLM Interpretation: Evidence from Quantifier Scope Disambiguation"
 message: "If you use this repository, please cite the associated paper."
+type: software
 authors:
   - family-names: Kosterna
     given-names: Jakub
   - family-names: Grudzińska-Zawadowska
     given-names: Justyna
-  - family-names: Borysewicz
-    given-names: Wojciech
   - family-names: Miecznikowski
     given-names: Maciej
+  - family-names: Borysewicz
+    given-names: Wojciech
   - family-names: Poteralska
     given-names: Julia
   - family-names: Rutkowski
@@ -17,3 +18,4 @@ authors:
   - family-names: Kwapisz
     given-names: Jan
 license: MIT
+repository-code: "https://github.com/Kostee/qsd-llm-world-knowledge"
