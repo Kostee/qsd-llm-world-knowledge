@@ -304,8 +304,7 @@ The older `scripts/summarize_results.py` is retained for historical compatibilit
 ├── data/
 │   ├── public/
 │   │   ├── balanced_qsd_440.csv
-│   │   ├── pseudosentences_emnlp2026.csv
-│   │   └── *.preview.csv
+│   │   └── pseudosentences_emnlp2026.csv
 │   ├── generated/              # deterministic, ignored
 │   └── private/                # local-only historical/RAG resources, ignored
 ├── scripts/

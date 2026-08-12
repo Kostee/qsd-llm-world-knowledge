@@ -155,13 +155,13 @@ Do not edit generated files manually.
 
 These local files are not required for the final public balanced or pseudosentence evaluation inputs.
 
-## Public preview files
+## Tracked public data
 
-Historical `*.preview.csv` files remain under `data/public/` for provenance. They are not authoritative inputs for the final paper experiments.
-
-Use:
+Only the two final EMNLP 2026 benchmark CSVs are tracked under `data/public/`:
 
 ```text
 data/public/balanced_qsd_440.csv
 data/public/pseudosentences_emnlp2026.csv
 ```
+
+Earlier public preview datasets were removed from the current repository state because they are not final inputs to the EMNLP 2026 experiments.
