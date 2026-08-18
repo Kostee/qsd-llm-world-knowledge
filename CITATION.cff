@@ -5,7 +5,7 @@ type: software
 authors:
   - family-names: Kosterna
     given-names: Jakub
-  - family-names: Grudzińska-Zawadowska
+  - family-names: Grudzińska
     given-names: Justyna
   - family-names: Miecznikowski
     given-names: Maciej
@@ -16,6 +16,6 @@ authors:
   - family-names: Rutkowski
     given-names: Kacper
   - family-names: Kwapisz
-    given-names: Jan
+    given-names: Jan Henryk
 license: MIT
 repository-code: "https://github.com/Kostee/qsd-llm-world-knowledge"
