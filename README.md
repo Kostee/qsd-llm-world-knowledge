@@ -10,7 +10,7 @@ The current repository state corresponds to the revised 2026 submission and its 
 
 ## Authors
 
-Jakub Kosterna, Justyna Grudzińska-Zawadowska, Maciej Miecznikowski, Wojciech Borysewicz, Julia Poteralska, Kacper Rutkowski, Jan Kwapisz
+Jakub Kosterna, Justyna Grudzińska, Maciej Miecznikowski, Wojciech Borysewicz, Julia Poteralska, Kacper Rutkowski, Jan Henryk Kwapisz
 
 ## Overview
 
